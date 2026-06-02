@@ -3,629 +3,761 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Dynamics | Premium Vehicle Showroom</title>
-    <!-- Inter Font & FontAwesome Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>EVREN'S AUTOMOTIVE BOUTIQUE</title>
     <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #1c1a17 0%, #161719 40%, #0f1011 100%);
-            --accent-gold: #d4af37;
-            --gold-glow: rgba(212, 175, 55, 0.15);
-            --luxury-gray: #1f2124;
-            --card-bg: rgba(26, 28, 32, 0.75);
-            --border-color: rgba(212, 175, 55, 0.2);
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-        }
-
-        * {
-            box-sizing: border-box;
+        /* LUXURY GRADIENT: Bottom-Left Platinum Gray/White to Top-Right Metallic Gold Champagne */
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: linear-gradient(225deg, #f3ede0 0%, #faf9f5 50%, #eaebed 100%);
+            background-attachment: fixed;
             margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
+            padding: 40px 20px 120px 20px;
+            color: #1a1a1a;
             -webkit-font-smoothing: antialiased;
         }
 
-        body {
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Luxurious Dynamic Lighting Background Elements */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -10%;
-            right: -10%;
-            width: 60vw;
-            height: 60vh;
-            background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -10%;
-            left: -10%;
-            width: 60vw;
-            height: 60vh;
-            background: radial-gradient(circle, rgba(74,85,104,0.12) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
         header {
-            position: relative;
-            z-index: 10;
-            padding: 3.5rem 2rem 2rem 2rem;
             text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-bottom: 50px;
         }
 
-        .brand-subtitle {
-            font-family: 'Playfair Display', serif;
-            color: var(--accent-gold);
-            font-size: 1.1rem;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-
-        header h1 {
-            font-size: 3rem;
+        h1 {
             font-weight: 800;
-            letter-spacing: -0.03em;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2.5rem;
+            color: #111111;
+            margin: 0 0 8px 0;
+            letter-spacing: 3px;
+            font-size: 2.8rem;
         }
 
-        /* Filter & Search Controls Panel */
-        .controls-container {
-            position: relative;
-            z-index: 10;
-            max-width: 1100px;
-            margin: 0 auto 3rem auto;
-            padding: 1.5rem;
-            background: rgba(20, 22, 25, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-top: 1px solid var(--border-color);
+        .subtitle {
+            font-size: 1rem;
+            color: #8c8f94;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        /* CONTROL PANEL: Search and Sort Bars Container */
+        .control-panel {
+            max-width: 1450px;
+            margin: 0 auto 40px auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px 30px;
             border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 1.25rem;
+            border: 1px solid rgba(230, 233, 237, 0.7);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             align-items: center;
-        }
-
-        @media (max-width: 850px) {
-            .controls-container {
-                grid-template-columns: 1fr;
-            }
+            justify-content: space-between;
         }
 
         .search-wrapper {
+            flex: 1;
+            min-width: 300px;
             position: relative;
-            width: 100%;
         }
 
-        .search-wrapper i {
-            position: absolute;
-            left: 1.25rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--accent-gold);
-            font-size: 1.1rem;
-            opacity: 0.8;
-        }
-
-        .search-wrapper input {
+        .search-input {
             width: 100%;
-            padding: 1rem 1rem 1rem 3.2rem;
-            background: rgba(10, 11, 13, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--text-primary);
+            padding: 14px 20px;
             font-size: 0.95rem;
-            font-weight: 400;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .search-wrapper input:focus {
+            border: 1px solid #dcdfe6;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #1a1a1a;
             outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 15px var(--gold-glow);
-            background: rgba(15, 16, 19, 0.9);
+            transition: all 0.2s ease;
+            box-sizing: border-box;
         }
 
-        .select-wrapper {
-            position: relative;
-            width: 100%;
+        .search-input:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
         }
 
-        .select-wrapper i {
-            position: absolute;
-            left: 1.25rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-            font-size: 1rem;
-            pointer-events: none;
+        .sort-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .select-wrapper select {
-            width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
-            background: rgba(10, 11, 13, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--text-primary);
+        .sort-select {
+            padding: 14px 25px;
             font-size: 0.9rem;
             font-weight: 500;
+            border: 1px solid #dcdfe6;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #333;
             cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-            transition: all 0.3s ease;
-        }
-
-        .select-wrapper select:focus {
             outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 15px var(--gold-glow);
+            transition: all 0.2s ease;
         }
 
-        .select-wrapper::after {
-            content: '\f107';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 1.25rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--accent-gold);
-            pointer-events: none;
+        .sort-select:focus, .sort-select:hover {
+            border-color: #d4af37;
         }
 
-        /* Showroom Grid Grid Layout */
-        .showroom-grid {
-            position: relative;
-            z-index: 10;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem 5rem 2rem;
+        /* CARD SHOWCASE GRID */
+        .car-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+            max-width: 1450px;
+            margin: 0 auto;
         }
 
-        /* Vehicle Card Masterpieces */
-        .vehicle-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+        .car-slot {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid #eef1f5;
+            border-radius: 16px;
+            padding: 26px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.02);
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            justify-content: space-between;
         }
 
-        .vehicle-card:hover {
+        .car-slot:hover {
             transform: translateY(-10px);
-            border-color: var(--border-color);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(212, 175, 55, 0.06);
+            box-shadow: 0 20px 45px rgba(212, 175, 55, 0.12);
+            border-color: #d4af37;
         }
 
-        .image-container {
-            position: relative;
+        .car-slot img {
             width: 100%;
-            height: 220px;
-            background: #0d0e10;
-            overflow: hidden;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+            background-color: #f7f7f7;
+        }
+
+        .car-title {
+            font-size: 1.35rem;
+            margin: 24px 0 6px 0;
+            font-weight: 700;
+            color: #111111;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            letter-spacing: -0.3px;
         }
 
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .vehicle-card:hover .image-container img {
-            transform: scale(1.06);
-        }
-
-        /* Visual Tag Overlay */
-        .propulsion-badge {
-            position: absolute;
-            top: 1.25rem;
-            right: 1.25rem;
-            padding: 0.4rem 0.9rem;
-            background: rgba(10, 11, 13, 0.75);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            z-index: 2;
-        }
-
-        .card-content {
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.25rem;
-        }
-
-        .title-block h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.2;
-            margin-bottom: 0.25rem;
-        }
-
-        .title-block .model-year {
-            font-size: 0.85rem;
-            color: var(--accent-gold);
+        .car-price {
+            color: #1a1a1a;
             font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .price-tag {
             font-size: 1.4rem;
-            font-weight: 800;
+            margin-bottom: 24px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* ELITE UI INTERACTION BUTTONS */
+        .btn-details {
+            background-color: #111111;
             color: #ffffff;
-            letter-spacing: -0.02em;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .price-tag::before {
-            content: 'MSRP';
-            font-size: 0.65rem;
+            padding: 14px 20px;
+            border-radius: 9px;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
             font-weight: 600;
-            color: var(--text-secondary);
-            letter-spacing: 0.1em;
-            margin-bottom: 0.1rem;
+            width: 100%;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            transition: background-color 0.2s ease;
         }
 
-        /* Technical Specification Matrix */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.9rem;
-            margin-top: auto;
-            padding-top: 1.25rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        .btn-details:hover {
+            background-color: #d4af37;
         }
 
-        .spec-item {
+        .compare-checkbox-container {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #edf1f6;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #7f8c8d;
             display: flex;
             align-items: center;
-            gap: 0.65rem;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none;
         }
 
-        .spec-item i {
-            color: var(--accent-gold);
-            font-size: 0.95rem;
-            width: 18px;
-            text-align: center;
-            opacity: 0.85;
+        .compare-checkbox-container input {
+            width: 19px;
+            height: 19px;
+            accent-color: #d4af37;
+            cursor: pointer;
         }
 
-        .spec-meta {
-            display: flex;
-            flex-direction: column;
+        /* EXPANDED INTERFACE SCREENS (DETAILS / COMPARE) */
+        #detail-view, #compare-view {
+            display: none;
+            background: rgba(255, 255, 255, 0.97);
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.05);
+            border: 1px solid rgba(238, 238, 238, 0.7);
         }
 
-        .spec-label {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
+        #detail-img {
+            width: 100%;
+            max-height: 520px;
+            object-fit: contain;
+            border-radius: 16px;
+            background-color: #f9fafb;
+            margin-bottom: 40px;
         }
 
-        .spec-value {
-            font-size: 0.88rem;
+        .btn-back {
+            background-color: #7f8c8d;
+            color: #ffffff;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             font-weight: 600;
-            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s;
         }
 
-        /* Dynamic Status Feedback */
-        .no-results {
-            grid-column: 1 / -1;
+        .btn-back:hover {
+            background-color: #111111;
+        }
+
+        /* METRIC SHEETS AND SPECIFICATION TABLES */
+        .stats-table, .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        .stats-table th, .stats-table td, .compare-table th, .compare-table td {
+            padding: 16px 22px;
+            border-bottom: 1px solid #f0f3f7;
+            font-size: 0.95rem;
+        }
+
+        .stats-table th {
+            background-color: #f8f9fa;
+            color: #4a5568;
+            font-weight: 600;
+            width: 40%;
+            text-align: left;
+        }
+
+        .compare-table th {
+            background-color: #111111;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .compare-table .stat-name {
+            font-weight: 600;
+            text-align: left;
+            background-color: #f8f9fa;
+            width: 28%;
+        }
+
+        /* HIGHEST VALUE DATA ACCENTUATION */
+        .higher-value-cell {
+            background-color: #f3faf4 !important;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .summary-box {
+            background: #fefcf9;
+            border: 1px solid #ebdcc5;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 35px;
             text-align: center;
-            padding: 5rem 2rem;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px dashed rgba(255,255,255,0.1);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111111;
+            letter-spacing: -0.2px;
         }
 
-        .no-results i {
-            color: var(--accent-gold);
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.6;
+        /* PERSISTENT ACTION FOOTER BAR */
+        .compare-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 24px;
+            box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            border-top: 1px solid #edf1f6;
         }
 
-        .no-results p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+        .btn-compare-trigger {
+            background-color: #d4af37;
+            color: #ffffff;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 9px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-compare-trigger:hover {
+            background-color: #111111;
+        }
+
+        .btn-compare-trigger:disabled {
+            background-color: #cbd5e0;
+            cursor: not-allowed;
+        }
+
+        /* RESPONSIVE LAYOUT MATRIX */
+        @media (max-width: 1300px) { .car-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 950px) { .car-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { 
+            .car-grid { grid-template-columns: 1fr; }
+            .control-panel { flex-direction: column; align-items: stretch; }
+            #detail-view, #compare-view { padding: 25px; }
+            .compare-bar { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="brand-subtitle">Curated Hyper-Performance</div>
-        <h1>High-End Automotive Showroom</h1>
-    </header>
+    <!-- CORE USER INTERFACE PORTFOLIO -->
+    <div id="shop-view">
+        <header>
+            <h1>EVREN'S AUTOMOTIVE BOUTIQUE</h1>
+            <div class="subtitle">Elite Fleet Selection & Technical Specifications</div>
+        </header>
 
-    <!-- Interactive Navigation Control Interface -->
-    <section class="controls-container">
-        <div class="search-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchBar" placeholder="Search fleet by brand, model or performance profiles...">
+        <!-- CONTROL FILTER ARCHITECTURE -->
+        <div class="control-panel">
+            <div class="search-wrapper">
+                <input type="text" id="search-bar" class="search-input" placeholder="Search fleet by brand, model or spec..." oninput="processLayoutFiltering()">
+            </div>
+            <div class="sort-group">
+                <select id="sort-price" class="sort-select" onchange="processLayoutFiltering()">
+                    <option value="default">Sort by Price</option>
+                    <option value="high-low">Price: High to Low</option>
+                    <option value="low-high">Price: Low to High</option>
+                </select>
+                <select id="sort-alpha" class="sort-select" onchange="processLayoutFiltering()">
+                    <option value="default">Sort Alphabetically</option>
+                    <option value="a-z">Name: A to Z</option>
+                    <option value="z-a">Name: Z to A</option>
+                </select>
+            </div>
         </div>
+
+        <div class="car-grid" id="main-grid">
+            <!-- Programmatically Injected Matrix Elements -->
+        </div>
+    </div>
+
+    <!-- TECHNICAL SPECIFICATION VIEWER -->
+    <div id="detail-view">
+        <h1 id="detail-title" style="text-align: left;"></h1>
+        <div id="detail-price" style="font-size: 1.3rem; color: #555; margin-bottom: 25px; font-weight: 500;"></div>
+        <img id="detail-img" src="" alt="Premium Vehicle Display">
         
-        <div class="select-wrapper">
-            <i class="fa-solid fa-tags"></i>
-            <select id="priceSort">
-                <option value="default" disabled selected hidden>Sort by Valuation</option>
-                <option value="desc">Price: High to Low</option>
-                <option value="asc">Price: Low to High</option>
-            </select>
-        </div>
+        <h3 style="margin-top: 45px; font-weight: 700; letter-spacing: 0.5px; border-bottom: 2px solid #111; padding-bottom: 12px; text-transform: uppercase;">PRODUCT DATASHEET SPECIFICATIONS</h3>
+        <table class="stats-table" id="stats-table-content"></table>
+        
+        <button class="btn-back" onclick="hideAllViews()">← Back to Fleet Showcase</button>
+    </div>
 
-        <div class="select-wrapper">
-            <i class="fa-solid fa-arrow-down-a-z"></i>
-            <select id="alphaSort">
-                <option value="default" disabled selected hidden>Sort Alphabetically</option>
-                <option value="az">Name: A to Z</option>
-                <option value="za">Name: Z to A</option>
-            </select>
-        </div>
-    </section>
+    <!-- MECHANICAL ANALYSIS ENGINE -->
+    <div id="compare-view">
+        <h1 style="text-align: left;">TECHNICAL COMPARISON CONSOLE</h1>
+        <div class="subtitle" style="text-align: left; margin-bottom: 30px;">Direct parameter alignment and evaluation metrics</div>
+        
+        <div class="summary-box" id="comparison-summary"></div>
 
-    <!-- Master Grid Interface -->
-    <main class="showroom-grid" id="showroomGrid">
-        <!-- Rendered Programmatically via Dataset Structure below -->
-    </main>
+        <table class="compare-table" id="compare-table-content"></table>
 
-    <!-- Core Business and UI Synchronization Logic Architecture -->
+        <button class="btn-back" onclick="hideAllViews()">← Exit Comparison Console</button>
+    </div>
+
+    <!-- STICKY NOTIFICATION CONSOLE FOOTER -->
+    <div class="compare-bar">
+        <span id="compare-status-text" style="font-weight: 600; letter-spacing: 0.5px; color: #4a5568;">Select two elite models for complete technical confrontation (0/2)</span>
+        <button id="compare-submit-btn" class="btn-compare-trigger" disabled onclick="startComparison()">Confront Vehicles</button>
+    </div>
+
     <script>
-        // Data Registry containing extended vehicle configuration arrays and parameters
-        const vehicleRegistry = [
+        // MASTER PRODUCTION FLEET DATA MATRIX (16 CARS TOTAL - 20 SPECIFICATION FIELDS PER VEHICLE)
+        const carDatabase = [
             {
-                brand: "Dodge",
-                model: "Durango SRT Hellcat",
-                year: 2026,
-                price: 144000,
-                propulsion: "Supercharged Gas",
-                image: "2021-dodge-durango-srt-hellcat.png",
-                engine: "6.2L SRT HEMI V8",
-                power: "710 HP",
-                torque: "645 lb-ft",
-                acceleration: "3.5s (0-60 mph)",
-                towing: "8,700 lbs"
+                id: "lightning_plat",
+                name: "Ford F-150 Lightning Platinum",
+                priceDisplay: "94,000 €",
+                priceNum: 94000,
+                img: "2023-Ford-Lightning-Electric-Driving-NF-24.png",
+                stats: { ps: 588, torque: 1050, displacement: 0, cylinders: 0, length: 5911, width: 2032, height: 1989, wheelbase: 3696, weight: 3115, towing: 3855, sprint: 4.0, tank: 131, seats: 5, wheels: 4, topSpeed: 180, engineType: "Full Electric", cargoVolume: 1495, screenSize: 15.5, warrantyYears: 5, safetyRating: 5 }
             },
             {
-                brand: "Jeep",
-                model: "Grand Cherokee Trackhawk",
-                year: 2026,
-                price: 112000,
-                propulsion: "Supercharged Gas",
-                image: "1150-HP-Jeep-Grand-Cherokee-Trackhawk.png",
-                engine: "6.2L Supercharged V8",
-                power: "707 HP",
-                torque: "645 lb-ft",
-                acceleration: "3.5s (0-60 mph)",
-                towing: "7,200 lbs"
+                id: "trackhawk_2026",
+                name: "Jeep Grand Cherokee Trackhawk 2026",
+                priceDisplay: "112,000 €",
+                priceNum: 112000,
+                img: "1150-HP-Jeep-Grand-Cherokee-Trackhawk.png",
+                stats: { ps: 717, torque: 875, displacement: 6166, cylinders: 8, length: 4821, width: 1954, height: 1749, wheelbase: 2916, weight: 2433, towing: 3266, sprint: 3.5, tank: 93, seats: 5, wheels: 4, topSpeed: 290, engineType: "Supercharged Gas", cargoVolume: 1028, screenSize: 10.1, warrantyYears: 3, safetyRating: 5 }
             },
             {
-                brand: "Ford",
-                model: "F-150 Lightning Platinum",
-                year: 2025,
-                price: 94000,
-                propulsion: "Dual Motor EV",
-                image: "2023-Ford-Lightning-Electric-Driving-NF-24.png",
-                engine: "Extended Range Battery",
-                power: "580 HP",
-                torque: "775 lb-ft",
-                acceleration: "4.0s (0-60 mph)",
-                towing: "10,000 lbs"
+                id: "colorado_bison",
+                name: "Chevrolet Colorado ZR2 Bison",
+                priceDisplay: "63,000 €",
+                priceNum: 63000,
+                img: "l-intro-1739989429.jpg",
+                stats: { ps: 310, torque: 583, displacement: 2727, cylinders: 4, length: 5411, width: 1986, height: 2007, wheelbase: 3338, weight: 2415, towing: 2495, sprint: 6.9, tank: 81, seats: 5, wheels: 4, topSpeed: 160, engineType: "Turbocharged Gas", cargoVolume: 1184, screenSize: 11.3, warrantyYears: 3, safetyRating: 4 }
             },
             {
-                brand: "Chevrolet",
-                model: "Colorado ZR2 Bison",
-                year: 2026,
-                price: 63000,
-                propulsion: "Turbocharged Gas",
-                image: "01-2024-chevrolet-silverado-zr2-driver-1.4.png",
-                engine: "2.7L TurboMax™ I4",
-                power: "310 HP",
-                torque: "430 lb-ft",
-                acceleration: "6.6s (0-60 mph)",
-                towing: "7,700 lbs"
+                id: "durango_hellcat",
+                name: "Dodge Durango SRT Hellcat",
+                priceDisplay: "144,000 €",
+                priceNum: 144000,
+                img: "2021-dodge-durango-srt-hellcat.png",
+                stats: { ps: 710, torque: 875, displacement: 6166, cylinders: 8, length: 5110, width: 1941, height: 1821, wheelbase: 3043, weight: 2590, towing: 3946, sprint: 3.5, tank: 93, seats: 6, wheels: 4, topSpeed: 290, engineType: "Supercharged Gas", cargoVolume: 1226, screenSize: 10.1, warrantyYears: 3, safetyRating: 4 }
+            },
+            {
+                id: "mammoth",
+                name: "Hennessey Mammoth 1000",
+                priceDisplay: "215,000 €",
+                priceNum: 215000,
+                img: "topgear-hennessey-mammoth-1000-066.jpg",
+                stats: { ps: 1026, torque: 1314, displacement: 6166, cylinders: 8, length: 5916, width: 2240, height: 2100, wheelbase: 3684, weight: 3080, towing: 3674, sprint: 3.2, tank: 125, seats: 5, wheels: 4, topSpeed: 210, engineType: "Modified Supercharged", cargoVolume: 1520, screenSize: 12.0, warrantyYears: 2, safetyRating: 4 }
+            },
+            {
+                id: "hercules",
+                name: "Rezvani Hercules 6x6",
+                priceDisplay: "555,000 €",
+                priceNum: 555000,
+                img: "Rezvani Hercules 6x6.png",
+                stats: { ps: 1014, torque: 1180, displacement: 6997, cylinders: 8, length: 6197, width: 2286, height: 2006, wheelbase: 3780, weight: 3175, towing: 4535, sprint: 3.9, tank: 140, seats: 5, wheels: 6, topSpeed: 195, engineType: "Custom Supercharged", cargoVolume: 1600, screenSize: 9.0, warrantyYears: 2, safetyRating: 4 }
+            },
+            {
+                id: "raptor_r",
+                name: "Ford F-150 Raptor R",
+                priceDisplay: "134,000 €",
+                priceNum: 134000,
+                img: "2023-ford-f-150-raptor-r-7.jpg",
+                stats: { ps: 712, torque: 868, displacement: 5163, cylinders: 8, length: 5908, width: 2200, height: 2047, wheelbase: 3693, weight: 2700, towing: 3946, sprint: 3.7, tank: 136, seats: 5, wheels: 4, topSpeed: 180, engineType: "Supercharged Gas", cargoVolume: 1495, screenSize: 12.0, warrantyYears: 5, safetyRating: 5 }
+            },
+            {
+                id: "gmc_sierra",
+                name: "GMC Sierra 3500HD Denali",
+                priceDisplay: "112,000 €",
+                priceNum: 112000,
+                img: "gmc-sierra-3500hd-denali-2024.jpg",
+                stats: { ps: 477, torque: 1322, displacement: 6649, cylinders: 8, length: 6352, width: 2073, height: 2045, wheelbase: 4037, weight: 3510, towing: 16330, sprint: 6.7, tank: 136, seats: 5, wheels: 4, topSpeed: 155, engineType: "Turbo-Diesel Duramax", cargoVolume: 1970, screenSize: 13.4, warrantyYears: 3, safetyRating: 5 }
+            },
+            {
+                id: "silverado_hd",
+                name: "Chevrolet Silverado HD",
+                priceDisplay: "69,000 €",
+                priceNum: 69000,
+                img: "2024-silveradohd-mcm-gallery-ext-21-2.jpeg",
+                stats: { ps: 477, torque: 1322, displacement: 6649, cylinders: 8, length: 6351, width: 2063, height: 2030, wheelbase: 4037, weight: 3450, towing: 16329, sprint: 6.5, tank: 136, seats: 6, wheels: 4, topSpeed: 155, engineType: "Turbo-Diesel V8", cargoVolume: 1970, screenSize: 13.4, warrantyYears: 3, safetyRating: 5 }
+            },
+            {
+                id: "ram_trx",
+                name: "RAM 1500 TRX Final Edition",
+                priceDisplay: "122,000 €",
+                priceNum: 122000,
+                img: "26my-trx-overview-hero_9656e38a1c2dd6206629b89271587c68-1248x624-1.jpg",
+                stats: { ps: 712, torque: 881, displacement: 6166, cylinders: 8, length: 5916, width: 2235, height: 2055, wheelbase: 3684, weight: 2880, towing: 3674, sprint: 4.5, tank: 125, seats: 5, wheels: 4, topSpeed: 190, engineType: "Supercharged HEMI Gas", cargoVolume: 1520, screenSize: 12.0, warrantyYears: 3, safetyRating: 4 }
+            },
+            {
+                id: "santa_fe",
+                name: "Hyundai Santa Fe (2024)",
+                priceDisplay: "49,000 €",
+                priceNum: 49000,
+                img: "4-hyundai-santa-fe-review-2024-uk.jpg",
+                stats: { ps: 253, torque: 361, displacement: 2497, cylinders: 4, length: 4830, width: 1900, height: 1720, wheelbase: 2815, weight: 2060, towing: 2000, sprint: 7.8, tank: 67, seats: 7, wheels: 4, topSpeed: 210, engineType: "Turbocharged Gas Inline", cargoVolume: 728, screenSize: 12.3, warrantyYears: 5, safetyRating: 5 }
+            },
+            {
+                id: "velociraptor",
+                name: "Hennessey VelociRaptor 6x6",
+                priceDisplay: "477,000 €",
+                priceNum: 477000,
+                img: "hennessey-velociraptor-6x6-6.jpg",
+                stats: { ps: 608, torque: 843, displacement: 3496, cylinders: 6, length: 6400, width: 2210, height: 2130, wheelbase: 3980, weight: 3130, towing: 3670, sprint: 4.9, tank: 136, seats: 5, wheels: 6, topSpeed: 175, engineType: "Twin-Turbo V6 EcoBoost", cargoVolume: 1650, screenSize: 12.0, warrantyYears: 3, safetyRating: 4 }
+            },
+            {
+                id: "suburban",
+                name: "Chevrolet Suburban High Country",
+                priceDisplay: "111,000 €",
+                priceNum: 111000,
+                img: "2026_chevrolet_suburban_4dr-suv_high-country_fq_oem_1_1600.png",
+                stats: { ps: 426, torque: 624, displacement: 6162, cylinders: 8, length: 5733, width: 2060, height: 1923, wheelbase: 3404, weight: 2715, towing: 3628, sprint: 6.1, tank: 106, seats: 7, wheels: 4, topSpeed: 180, engineType: "EcoTec3 V8 Gas", cargoVolume: 1175, screenSize: 17.7, warrantyYears: 3, safetyRating: 5 }
+            },
+            {
+                id: "silverado_zr2",
+                name: "Chevrolet Silverado ZR2",
+                priceDisplay: "82,000 €",
+                priceNum: 82000,
+                img: "01-2024-chevrolet-silverado-zr2-driver-1.4.png",
+                stats: { ps: 426, torque: 624, displacement: 6162, cylinders: 8, length: 5890, width: 2068, height: 1991, wheelbase: 3747, weight: 2540, towing: 4037, sprint: 5.9, tank: 91, seats: 5, wheels: 4, topSpeed: 180, engineType: "V8 Naturally Aspirated", cargoVolume: 1512, screenSize: 13.4, warrantyYears: 3, safetyRating: 4 }
+            },
+            {
+                id: "tundra",
+                name: "Toyota Tundra (2026)",
+                priceDisplay: "55,000 €",
+                priceNum: 55000,
+                img: "Screen-Shot-2024-10-22-at-4.18.49-PM.png",
+                stats: { ps: 443, torque: 790, displacement: 3445, cylinders: 6, length: 5933, width: 2037, height: 1981, wheelbase: 3700, weight: 2565, towing: 5035, sprint: 5.7, tank: 122, seats: 5, wheels: 4, topSpeed: 180, engineType: "i-FORCE MAX Hybrid Twin-Turbo", cargoVolume: 1480, screenSize: 14.0, warrantyYears: 3, safetyRating: 5 }
+            },
+            {
+                id: "hilux",
+                name: "Toyota Hilux (2025)",
+                priceDisplay: "53,000 €",
+                priceNum: 53000,
+                img: "toyota-hilux-2025-5.jpg",
+                stats: { ps: 204, torque: 500, displacement: 2755, cylinders: 4, length: 5325, width: 1900, height: 1815, wheelbase: 3085, weight: 2125, towing: 3500, sprint: 10.7, tank: 80, seats: 5, wheels: 4, topSpeed: 175, engineType: "Turbo-Diesel Inline-4", cargoVolume: 1050, screenSize: 8.0, warrantyYears: 3, safetyRating: 5 }
             }
         ];
 
-        // Core DOM Elements Accessors
-        const showroomGrid = document.getElementById('showroomGrid');
-        const searchBar = document.getElementById('searchBar');
-        const priceSort = document.getElementById('priceSort');
-        const alphaSort = document.getElementById('alphaSort');
+        // LOGICAL META-DATA DEFINITION DESCRIPTORS (20 TOTAL FIELDS EVALUATED)
+        const statLabels = {
+            priceNum: { label: "Estimated Market Cost", unit: " €", higherIsBetter: false, type: "numeric" },
+            engineType: { label: "Powertrain Engine Matrix", unit: "", higherIsBetter: null, type: "string" },
+            ps: { label: "Engine Total Power Output", unit: " HP", higherIsBetter: true, type: "numeric" },
+            torque: { label: "Peak Rotational Force", unit: " Nm", higherIsBetter: true, type: "numeric" },
+            displacement: { label: "Engine Capacity Displacement", unit: " cc", higherIsBetter: true, type: "numeric" },
+            cylinders: { label: "Cylinder Architecture Configuration", unit: " Cylinders", higherIsBetter: true, type: "numeric" },
+            sprint: { label: "Acceleration Velocity (0-100 km/h)", unit: " sec", higherIsBetter: false, type: "numeric" },
+            topSpeed: { label: "Terminal Maximum Velocity", unit: " km/h", higherIsBetter: true, type: "numeric" },
+            towing: { label: "Maximum Dynamic Towing Capability", unit: " kg", higherIsBetter: true, type: "numeric" },
+            weight: { label: "Structural Unladen Curb Weight", unit: " kg", higherIsBetter: false, type: "numeric" },
+            length: { label: "Chassis Overall Length Dimension", unit: " mm", higherIsBetter: true, type: "numeric" },
+            width: { label: "Chassis Overall Width Dimension", unit: " mm", higherIsBetter: true, type: "numeric" },
+            height: { label: "Chassis Overall Height Dimension", unit: " mm", higherIsBetter: true, type: "numeric" },
+            wheelbase: { label: "Axle Separation (Wheelbase)", unit: " mm", higherIsBetter: true, type: "numeric" },
+            wheels: { label: "Ground Contact Points (Wheels)", unit: " Wheels", higherIsBetter: true, type: "numeric" },
+            tank: { label: "Total Fuel/Battery Reserve Volume", unit: " L / kWh", higherIsBetter: true, type: "numeric" },
+            cargoVolume: { label: "Rear Storage Cargo Capacity", unit: " Liters", higherIsBetter: true, type: "numeric" },
+            screenSize: { label: "Media Infotainment Interface Area", unit: " inches", higherIsBetter: true, type: "numeric" },
+            seats: { label: "Standard Seating Configuration", unit: " Occupants", higherIsBetter: true, type: "numeric" },
+            warrantyYears: { label: "Comprehensive Factory Coverage Warranty", unit: " Years", higherIsBetter: true, type: "numeric" }
+        };
 
-        // Formats pricing integers into clean localized currency denominations 
-        function formatCurrency(amount) {
-            return '$' + amount.toLocaleString('en-US');
-        }
+        let selectedForCompare = [];
+        let viewableFleetState = [...carDatabase];
 
-        // Card Assembly pipeline providing semantic markup injections
-        function renderShowroom(vehicles) {
-            showroomGrid.innerHTML = '';
+        // SYSTEM LAYOUT COMPUTATION AND RENDER REFRESH ENGINE
+        function renderActiveFleet() {
+            const grid = document.getElementById('main-grid');
+            grid.innerHTML = "";
             
-            if (vehicles.length === 0) {
-                showroomGrid.innerHTML = `
-                    <div class="no-results">
-                        <i class="fa-solid fa-car-rear"></i>
-                        <p>No high-performance vehicles match your current criteria.</p>
-                    </div>
-                `;
+            if(viewableFleetState.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px; font-size: 1.2rem; color: #8c8f94; font-weight: 500;">No pristine vehicles match your specified matrix query criteria.</div>`;
                 return;
             }
 
-            vehicles.forEach(vehicle => {
-                const card = document.createElement('article');
-                card.className = 'vehicle-card';
-                card.innerHTML = `
-                    <div class="image-container">
-                        <span class="propulsion-badge">${vehicle.propulsion}</span>
-                        <img src="${vehicle.image}" alt="${vehicle.brand} ${vehicle.model}" onerror="this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=600';">
+            viewableFleetState.forEach((car) => {
+                // Find index matching global object configuration safely
+                const originalIndex = carDatabase.findIndex(original => original.id === car.id);
+                const isChecked = selectedForCompare.includes(car.id) ? "checked" : "";
+                
+                const slot = document.createElement('div');
+                slot.className = 'car-slot';
+                slot.innerHTML = `
+                    <div>
+                        <img src="${car.img}" alt="${car.name}">
+                        <div class="car-title">${car.name}</div>
+                        <div class="car-price">${car.priceDisplay}</div>
                     </div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="title-block">
-                                <span class="model-year">${vehicle.year} Edition</span>
-                                <h3>${vehicle.brand} ${vehicle.model}</h3>
-                            </div>
-                            <div class="price-tag">${formatCurrency(vehicle.price)}</div>
-                        </div>
-                        <div class="specs-grid">
-                            <div class="spec-item">
-                                <i class="fa-solid fa-microchip"></i>
-                                <div class="spec-meta">
-                                    <span class="spec-label">Powertrain</span>
-                                    <span class="spec-value">${vehicle.engine}</span>
-                                </div>
-                            </div>
-                            <div class="spec-item">
-                                <i class="fa-solid fa-bolt"></i>
-                                <div class="spec-meta">
-                                    <span class="spec-label">Output</span>
-                                    <span class="spec-value">${vehicle.power}</span>
-                                </div>
-                            </div>
-                            <div class="spec-item">
-                                <i class="fa-solid fa-gauge-high"></i>
-                                <div class="spec-meta">
-                                    <span class="spec-label">Torque</span>
-                                    <span class="spec-value">${vehicle.torque}</span>
-                                </div>
-                            </div>
-                            <div class="spec-item">
-                                <i class="fa-solid fa-stopwatch"></i>
-                                <div class="spec-meta">
-                                    <span class="spec-label">0-60 MPH</span>
-                                    <span class="spec-value">${vehicle.acceleration}</span>
-                                </div>
-                            </div>
-                            <div class="spec-item">
-                                <i class="fa-solid fa-weight-hanging"></i>
-                                <div class="spec-meta">
-                                    <span class="spec-label">Towing Max</span>
-                                    <span class="spec-value">${vehicle.towing}</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                        <button class="btn-details" onclick="showDetails(${originalIndex})">View Analysis Specifications</button>
+                        <label class="compare-checkbox-container">
+                            <input type="checkbox" id="chk-${car.id}" ${isChecked} onchange="toggleCompareExecution('${car.id}')">
+                            Queue for System Confrontation
+                        </label>
                     </div>
                 `;
-                showroomGrid.appendChild(card);
+                grid.appendChild(slot);
             });
         }
 
-        // Mutation Handler handling Filtering, Structural Querying, and Priority Sorting
-        function executeQueryFilter() {
-            let processedFleet = [...vehicleRegistry];
-            const queryToken = searchBar.value.toLowerCase().trim();
+        // INTELLIGENT FILTER AND COMPREHENSIVE DUAL SORT MATCHING ALGORYTHM
+        function processLayoutFiltering() {
+            const searchInput = document.getElementById('search-bar').value.toLowerCase().trim();
+            const priceSortValue = document.getElementById('sort-price').value;
+            const alphaSortValue = document.getElementById('sort-alpha').value;
 
-            // Eval Text Search Constraints
-            if (queryToken !== "") {
-                processedFleet = processedFleet.filter(car => {
-                    const inlineTerms = `${car.brand} ${car.model} ${car.engine} ${car.propulsion}`.toLowerCase();
-                    return inlineTerms.includes(queryToken);
-                });
+            // Filtration Routine Phase
+            let computationalMatrix = carDatabase.filter(car => {
+                const queryMatch = car.name.toLowerCase().includes(searchInput);
+                const engineMatch = car.stats.engineType.toLowerCase().includes(searchInput);
+                return queryMatch || engineMatch;
+            });
+
+            // Sorting Processing Logic Phase (Price Metric)
+            if (priceSortValue === "high-low") {
+                computationalMatrix.sort((alpha, beta) => beta.priceNum - alpha.priceNum);
+            } else if (priceSortValue === "low-high") {
+                computationalMatrix.sort((alpha, beta) => alpha.priceNum - beta.priceNum);
             }
 
-            // Eval Price Sorting Matrix
-            if (priceSort.value === 'desc') {
-                processedFleet.sort((alpha, beta) => beta.price - alpha.price);
-            } else if (priceSort.value === 'asc') {
-                processedFleet.sort((alpha, beta) => alpha.price - beta.price);
+            // Sorting Processing Logic Phase (Alphabetical Orientation Metric)
+            if (alphaSortValue === "a-z") {
+                computationalMatrix.sort((alpha, beta) => alpha.name.localeCompare(beta.name));
+            } else if (alphaSortValue === "z-a") {
+                computationalMatrix.sort((alpha, beta) => beta.name.localeCompare(alpha.name));
             }
 
-            // Eval Lexical Sorting Alphabetical Matrix
-            if (alphaSort.value === 'az') {
-                processedFleet.sort((alpha, beta) => {
-                    const fullTitleA = `${alpha.brand} ${alpha.model}`.toLowerCase();
-                    const fullTitleB = `${beta.brand} ${beta.model}`.toLowerCase();
-                    return fullTitleA.localeCompare(fullTitleB);
-                });
-            } else if (alphaSort.value === 'za') {
-                processedFleet.sort((alpha, beta) => {
-                    const fullTitleA = `${alpha.brand} ${alpha.model}`.toLowerCase();
-                    const fullTitleB = `${beta.brand} ${beta.model}`.toLowerCase();
-                    return fullTitleB.localeCompare(fullTitleA);
-                });
-            }
-
-            renderShowroom(processedFleet);
+            viewableFleetState = computationalMatrix;
+            renderActiveFleet();
         }
 
-        // Binding event listener triggers to pipeline mutations
-        searchBar.addEventListener('input', executeQueryFilter);
-        
-        priceSort.addEventListener('change', () => {
-            // Unlink conflicting alphabetical priority sorting index selections on active manipulation
-            alphaSort.selectedIndex = 0;
-            executeQueryFilter();
-        });
-        
-        alphaSort.addEventListener('change', () => {
-            // Unlink conflicting evaluation pricing priority index selections on active manipulation
-            priceSort.selectedIndex = 0;
-            executeQueryFilter();
-        });
+        function hideAllViews() {
+            document.getElementById('shop-view').style.display = 'block';
+            document.getElementById('detail-view').style.display = 'none';
+            document.getElementById('compare-view').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
 
-        // Initialize App State
-        document.addEventListener('DOMContentLoaded', () => {
-            renderShowroom(vehicleRegistry);
-        });
+        function showDetails(index) {
+            const car = carDatabase[index];
+            document.getElementById('shop-view').style.display = 'none';
+            document.getElementById('detail-view').style.display = 'block';
+            
+            document.getElementById('detail-title').innerText = car.name;
+            document.getElementById('detail-price').innerText = `Base Manufacturer Valuation Point: ${car.priceDisplay}`;
+            document.getElementById('detail-img').src = car.img;
+
+            const table = document.getElementById('stats-table-content');
+            table.innerHTML = "";
+            
+            for (let key in statLabels) {
+                const valueData = (key === 'priceNum') ? car.priceDisplay : `${car.stats[key]}${statLabels[key].unit}`;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <th>${statLabels[key].label}</th>
+                    <td>${valueData}</td>
+                `;
+                table.appendChild(row);
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function toggleCompareExecution(carId) {
+            const checkbox = document.getElementById(`chk-${carId}`);
+            
+            if (checkbox && checkbox.checked) {
+                if (selectedForCompare.length >= 2) {
+                    checkbox.checked = false;
+                    alert("System Limits Exceeded: You may only confront two architectural models concurrently.");
+                    return;
+                }
+                if (!selectedForCompare.includes(carId)) {
+                    selectedForCompare.push(carId);
+                }
+            } else {
+                selectedForCompare = selectedForCompare.filter(id => id !== carId);
+            }
+
+            const currentCount = selectedForCompare.length;
+            document.getElementById('compare-status-text').innerText = `Select two elite models for complete technical confrontation (${currentCount}/2)`;
+            document.getElementById('compare-submit-btn').disabled = (currentCount !== 2);
+        }
+
+        // DEEP MECHANICAL STRUCTURAL PARSING COMPARISON CALCULATOR
+        function startComparison() {
+            if (selectedForCompare.length !== 2) return;
+
+            const car1 = carDatabase.find(c => c.id === selectedForCompare[0]);
+            const car2 = carDatabase.find(c => c.id === selectedForCompare[1]);
+
+            document.getElementById('shop-view').style.display = 'none';
+            document.getElementById('compare-view').style.display = 'block';
+
+            let structuralPerformancePoints1 = 0;
+            let structuralPerformancePoints2 = 0;
+
+            const tableContent = document.getElementById('compare-table-content');
+            tableContent.innerHTML = `
+                <tr>
+                    <th class="stat-name">Comprehensive Mechanical Dimension</th>
+                    <th>${car1.name}</th>
+                    <th>${car2.name}</th>
+                </tr>
+            `;
+
+            for (let key in statLabels) {
+                const rule = statLabels[key];
+                let rawVal1 = (key === 'priceNum') ? car1.priceNum : car1.stats[key];
+                let rawVal2 = (key === 'priceNum') ? car2.priceNum : car2.stats[key];
+
+                let outputDisplayVal1 = (key === 'priceNum') ? car1.priceDisplay : `${car1.stats[key]}${rule.unit}`;
+                let outputDisplayVal2 = (key === 'priceNum') ? car2.priceDisplay : `${car2.stats[key]}${rule.unit}`;
+
+                let computationalClassElement1 = "";
+                let computationalClassElement2 = "";
+
+                if (rule.type === "numeric" && rawVal1 !== rawVal2) {
+                    if (rule.higherIsBetter) {
+                        if (rawVal1 > rawVal2) { computationalClassElement1 = "higher-value-cell"; structuralPerformancePoints1++; } 
+                        else { computationalClassElement2 = "higher-value-cell"; structuralPerformancePoints2++; }
+                    } else {
+                        if (rawVal1 < rawVal2) { computationalClassElement1 = "higher-value-cell"; structuralPerformancePoints1++; } 
+                        else { computationalClassElement2 = "higher-value-cell"; structuralPerformancePoints2++; }
+                    }
+                }
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="stat-name">${rule.label}</td>
+                    <td class="${computationalClassElement1}">${outputDisplayVal1}</td>
+                    <td class="${computationalClassElement2}">${outputDisplayVal2}</td>
+                `;
+                tableContent.appendChild(row);
+            }
+
+            const summaryOutputBox = document.getElementById('comparison-summary');
+            if (structuralPerformancePoints1 > structuralPerformancePoints2) {
+                summaryOutputBox.innerText = `The ${car1.name} outperforms across a broader profile spectrum, achieving higher scoring data vectors in ${structuralPerformancePoints1} out of 19 verifiable metrics.`;
+            } else if (structuralPerformancePoints2 > structuralPerformancePoints1) {
+                summaryOutputBox.innerText = `The ${car2.name} outperforms across a broader profile spectrum, achieving higher scoring data vectors in ${structuralPerformancePoints2} out of 19 verifiable metrics.`;
+            } else {
+                summaryOutputBox.innerText = `Complete Architectural Equilibrium: Both elite assets hold equivalent structural scoring vectors at exactly ${structuralPerformancePoints1} engineering parameter attributes each.`;
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        // INITIAL ENGINE LOAD BOOTSTRAP
+        window.onload = function() {
+            renderActiveFleet();
+        };
     </script>
 </body>
 </html>
