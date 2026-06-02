@@ -5,408 +5,411 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EVREN'S PICKUP & SUV SHOP</title>
     <style>
-        /* Durchgehend sauberes Helvetica-Design */
+        /* Luxus-Farbverlauf: Unten links Grau/Weiß -> Oben rechts edles Champagner-Gold */
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f5f6f7 0%, #fcfbf7 60%, #f4eee1 100%);
+            background-attachment: fixed;
             margin: 0;
-            padding: 20px;
-            text-align: center;
-            color: #212529;
+            padding: 30px 20px 100px 20px;
+            color: #2c3e50;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Edle, minimalistische Überschrift */
         h1 {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-weight: 900;
+            font-weight: 800;
             text-transform: uppercase;
-            color: #111;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            font-size: 2.4rem;
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: #6c757d;
-            margin-bottom: 30px;
+            font-size: 1rem;
+            color: #8a8d91;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        /* Haupt-Raster für 4 Spalten */
+        /* Vergrößerte Fahrzeug-Slots (3er/4er Grid je nach Display) */
         .car-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            max-width: 1300px;
-            margin: 0 auto 40px auto;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .car-slot {
-            background: white;
-            border: 1px solid #dee2e6;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e6e9ed;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .car-slot:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+            border-color: #d4af37; /* Goldene Akzentuierung beim Hover */
         }
 
+        /* Größere Bilddarstellung */
         .car-slot img {
             width: 100%;
-            height: 180px;
+            height: 210px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .car-title {
-            font-size: 1.2rem;
-            margin: 15px 0 5px 0;
-            font-weight: bold;
-            height: 50px;
+            font-size: 1.25rem;
+            margin: 20px 0 8px 0;
+            font-weight: 700;
+            color: #111;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .car-price {
-            color: #28a745;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            color: #111;
+            font-weight: 500;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
         }
 
-        /* Buttons & Controls */
+        /* Hochwertige, matte Buttons */
         .btn-details {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 6px;
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
             font-size: 0.9rem;
             border: none;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             width: 100%;
-            box-sizing: border-box;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s;
         }
 
-        .btn-details:hover { background-color: #0056b3; }
+        .btn-details:hover { background-color: #d4af37; }
 
         .compare-checkbox-container {
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px solid #f1f3f5;
-            font-size: 0.9rem;
-            color: #495057;
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid #eaedf1;
+            font-size: 0.85rem;
+            color: #7f8c8d;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             cursor: pointer;
         }
 
         .compare-checkbox-container input {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
+            accent-color: #d4af37;
             cursor: pointer;
         }
 
-        /* Fixierter Vergleichs-Button unten */
-        .compare-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .btn-compare-trigger {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
-        }
-        .btn-compare-trigger:hover { background-color: #218838; }
-        .btn-compare-trigger:disabled {
-            background-color: #6c757d;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        /* Detail- und Vergleichsansichten */
+        /* Edle Unterseiten (Details & Vergleich) */
         #detail-view, #compare-view {
             display: none;
-            background: white;
-            max-width: 900px;
-            margin: 30px auto 80px auto;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+            border: 1px solid #eaeaea;
             text-align: left;
         }
 
         #detail-img {
             width: 100%;
-            max-height: 450px;
+            max-height: 500px;
             object-fit: contain;
-            border-radius: 8px;
-            background-color: #f8f9fa;
+            border-radius: 12px;
+            background-color: #fafafa;
+            margin-bottom: 30px;
         }
 
         .btn-back {
-            background-color: #6c757d;
+            background-color: #7f8c8d;
             color: white;
-            padding: 12px 25px;
+            padding: 12px 28px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            margin-top: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 40px;
+            transition: background-color 0.2s;
         }
-        .btn-back:hover { background-color: #5a6268; }
+        .btn-back:hover { background-color: #1a1a1a; }
 
-        /* Technische Tabellen */
-        .stats-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
-        }
-
-        .stats-table th, .stats-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #dee2e6;
-            text-align: left;
-        }
-
-        .stats-table th {
-            background-color: #f1f3f5;
-            font-weight: bold;
-            width: 35%;
-        }
-
-        /* Layout Vergleichstabelle */
-        .compare-table {
+        /* Technische Tabellen im Luxus-Look */
+        .stats-table, .compare-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-        .compare-table th, .compare-table td {
-            padding: 15px;
-            border: 1px solid #dee2e6;
-            text-align: center;
-        }
-        .compare-table th { background-color: #f1f3f5; }
-        .compare-table .stat-name { font-weight: bold; text-align: left; background-color: #f8f9fa; width: 20%; }
-        
-        /* Punkte-Indikatoren */
-        .winner-cell { background-color: #d4edda !important; color: #155724; font-weight: bold; }
-        .score-board {
-            background: #e9ecef;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-around;
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-        .final-winner {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #28a745;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 2px dashed #28a745;
-            border-radius: 8px;
-            background-color: #f4fff6;
+
+        .stats-table th, .stats-table td, .compare-table th, .compare-table td {
+            padding: 14px 20px;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 0.95rem;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) { .car-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 650px) { 
-            .car-grid { grid-template-columns: 1fr; } 
-            #detail-view, #compare-view { padding: 20px; }
-            .compare-table { font-size: 0.8rem; }
+        .stats-table th {
+            background-color: #f8f9fa;
+            color: #4a5568;
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .compare-table th {
+            background-color: #1a1a1a;
+            color: white;
+            font-weight: 600;
+        }
+        .compare-table .stat-name {
+            font-weight: 600;
+            text-align: left;
+            background-color: #f8f9fa;
+            width: 26%;
+        }
+
+        /* Technische Wertungs-Akzente (Dezent statt grell) */
+        .higher-value-cell {
+            background-color: #f4f9f4 !important;
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .summary-box {
+            background: #fdfbf7;
+            border: 1px solid #eadeca;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* Fixierte edle Statusleiste unten */
+        .compare-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.93);
+            padding: 20px;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+            backdrop-filter: blur(15px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .btn-compare-trigger {
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-compare-trigger:hover { background-color: #1a1a1a; }
+        .btn-compare-trigger:disabled {
+            background-color: #cbd5e0;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) { .car-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .car-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { 
+            .car-grid { grid-template-columns: 1fr; }
+            #detail-view, #compare-view { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SHOP-ÜBERSICHT -->
+    <!-- PORTFOLIO ÜBERSICHT -->
     <div id="shop-view">
         <h1>EVREN'S PICKUP & SUV SHOP</h1>
-        <div class="subtitle">Exklusive US-Trucks, Super-SUVs & 6x6 Monster im direkten Leistungsvergleich</div>
+        <div class="subtitle">Premium Automotive Portfolio & Technische Analysen</div>
 
         <div class="car-grid" id="main-grid">
-            <!-- Die Slots werden vollautomatisch über JavaScript generiert, damit die Daten absolut fehlerfrei synchron bleiben -->
+            <!-- Dynamischer Aufbau durch JS -->
         </div>
     </div>
 
-    <!-- SPEZIFIKATIONS-UNTERSEITE -->
+    <!-- TECHNISCHE SPEZIFIKATIONEN -->
     <div id="detail-view">
-        <h1 id="detail-title" style="text-align: left; margin-bottom: 5px;"></h1>
-        <div id="detail-price" style="font-size: 1.5rem; color: #28a745; font-weight: bold; margin-bottom: 20px;"></div>
+        <h1 id="detail-title"></h1>
+        <div id="detail-price"></div>
         <img id="detail-img" src="" alt="Fahrzeug">
         
-        <h3 style="margin-top: 30px; border-bottom: 2px solid #111; padding-bottom: 8px;">Technische Daten (Werksangaben)</h3>
-        <table class="stats-table" id="stats-table-content">
-            <!-- Wird dynamisch befüllt -->
-        </table>
+        <h3 style="margin-top: 40px; font-weight: 700; letter-spacing: 0.5px; border-bottom: 1px solid #111; padding-bottom: 10px;">PRODUKTSPEZIFIKATIONEN</h3>
+        <table class="stats-table" id="stats-table-content"></table>
         
         <button class="btn-back" onclick="hideAllViews()">← Zurück zur Übersicht</button>
     </div>
 
-    <!-- COMPARES/DUELL-UNTERSEITE -->
+    <!-- VERGLEICHSMODUL -->
     <div id="compare-view">
-        <h1>Fahrzeug-Duell</h1>
-        <div class="subtitle">Direkter Head-to-Head Vergleich mit automatischer Punkteauswertung</div>
+        <h1>Technische Gegenüberstellung</h1>
+        <div class="subtitle">Direkter Abgleich der fahrzeugspezifischen Kennwerte</div>
         
-        <div class="final-winner" id="duel-winner-announcement"></div>
-        
-        <div class="score-board">
-            <div id="score-car1">Auto 1: 0 Punkte</div>
-            <div id="score-car2">Auto 2: 0 Punkte</div>
-        </div>
+        <div class="summary-box" id="comparison-summary"></div>
 
-        <table class="compare-table" id="compare-table-content">
-            <!-- Wird dynamisch befüllt -->
-        </table>
+        <table class="compare-table" id="compare-table-content"></table>
 
         <button class="btn-back" onclick="hideAllViews()">← Vergleich beenden</button>
     </div>
 
-    <!-- FLOATING VERGLEICHS-BAR UNTEN -->
+    <!-- UNTERE AKTIONBAR -->
     <div class="compare-bar">
-        <span id="compare-status-text">Wähle 2 Fahrzeuge für das Duell aus (0/2)</span>
+        <span id="compare-status-text" style="font-weight: 500; letter-spacing: 0.5px;">Wählen Sie zwei Modelle für eine Gegenüberstellung (0/2)</span>
         <button id="compare-submit-btn" class="btn-compare-trigger" disabled onclick="startComparison()">Fahrzeuge vergleichen</button>
     </div>
 
-    <!-- DIE DATENBANK & LOGIK -->
     <script>
-        // Präzise recherchierte, echte Fahrzeugdaten (Werksangaben)
+        // Datenbank mit 15 harten, exakten Werksstatistiken pro Fahrzeug
         const carDatabase = [
             {
                 id: "raptor_r",
                 name: "Ford F-150 Raptor R",
                 price: "134.000 €",
                 img: "2023-ford-f-150-raptor-r-7.jpg",
-                stats: { ps: 712, laenge: 5908, breite: 2200, hoehe: 2047, gewicht: 2700, sprint: 3.7, tank: 136, sitze: 5, raeder: 4, kmh: 180 }
+                stats: { ps: 712, drehmoment: 868, hubraum: 5163, zylinder: 8, laenge: 5908, breite: 2200, hoehe: 2047, radstand: 3693, gewicht: 2700, anhanger: 3946, sprint: 3.7, tank: 136, sitze: 5, raeder: 4, kmh: 180 }
             },
             {
                 id: "silverado_hd",
                 name: "Chevrolet Silverado HD",
                 price: "69.000 €",
                 img: "2024-silveradohd-mcm-gallery-ext-21-2.jpeg",
-                stats: { ps: 477, laenge: 6351, breite: 2063, hoehe: 2030, gewicht: 3450, sprint: 6.5, tank: 136, sitze: 6, raeder: 4, kmh: 155 }
+                stats: { ps: 477, drehmoment: 1322, hubraum: 6649, zylinder: 8, laenge: 6351, breite: 2063, hoehe: 2030, radstand: 4037, gewicht: 3450, anhanger: 16329, sprint: 6.5, tank: 136, sitze: 6, raeder: 4, kmh: 155 }
             },
             {
                 id: "ram_trx",
                 name: "RAM 1500 TRX Final Edition",
                 price: "122.000 €",
                 img: "26my-trx-overview-hero_9656e38a1c2dd6206629b89271587c68-1248x624-1.jpg",
-                stats: { ps: 712, laenge: 5916, breite: 2235, hoehe: 2055, gewicht: 2880, sprint: 4.5, tank: 125, sitze: 5, raeder: 4, kmh: 190 }
+                stats: { ps: 712, drehmoment: 881, hubraum: 6166, zylinder: 8, laenge: 5916, breite: 2235, hoehe: 2055, radstand: 3684, gewicht: 2880, anhanger: 3674, sprint: 4.5, tank: 125, sitze: 5, raeder: 4, kmh: 190 }
             },
             {
                 id: "santa_fe",
                 name: "Hyundai Santa Fe (2024)",
                 price: "49.000 €",
                 img: "4-hyundai-santa-fe-review-2024-uk.jpg",
-                stats: { ps: 253, laenge: 4830, breite: 1900, hoehe: 1720, gewicht: 2060, sprint: 7.8, tank: 67, sitze: 7, raeder: 4, kmh: 210 }
+                stats: { ps: 253, drehmoment: 361, hubraum: 2497, zylinder: 4, laenge: 4830, breite: 1900, hoehe: 1720, radstand: 2815, gewicht: 2060, anhanger: 2000, sprint: 7.8, tank: 67, sitze: 7, raeder: 4, kmh: 210 }
             },
             {
                 id: "gmc_sierra",
                 name: "GMC Sierra 3500HD Denali",
                 price: "112.000 €",
                 img: "gmc-sierra-3500hd-denali-2024.jpg",
-                stats: { ps: 477, laenge: 6352, breite: 2073, hoehe: 2045, gewicht: 3510, sprint: 6.7, tank: 136, sitze: 5, raeder: 4, kmh: 155 }
+                stats: { ps: 477, drehmoment: 1322, hubraum: 6649, zylinder: 8, laenge: 6352, breite: 2073, hoehe: 2045, radstand: 4037, gewicht: 3510, anhanger: 16330, sprint: 6.7, tank: 136, sitze: 5, raeder: 4, kmh: 155 }
             },
             {
                 id: "velociraptor",
                 name: "Hennessey VelociRaptor 6x6",
                 price: "477.000 €",
                 img: "hennessey-velociraptor-6x6-6.jpg",
-                stats: { ps: 608, laenge: 6400, breite: 2210, hoehe: 2130, gewicht: 3130, sprint: 4.9, tank: 136, sitze: 5, raeder: 6, kmh: 175 }
+                stats: { ps: 608, drehmoment: 843, hubraum: 3496, zylinder: 6, laenge: 6400, breite: 2210, hoehe: 2130, radstand: 3980, gewicht: 3130, anhanger: 3670, sprint: 4.9, tank: 136, sitze: 5, raeder: 6, kmh: 175 }
             },
             {
                 id: "mammoth",
                 name: "Hennessey Mammoth 1000",
                 price: "215.000 €",
                 img: "topgear-hennessey-mammoth-1000-066.jpg",
-                stats: { ps: 1026, laenge: 5916, breite: 2240, hoehe: 2100, gewicht: 3080, sprint: 3.2, tank: 125, sitze: 5, raeder: 4, kmh: 210 }
+                stats: { ps: 1026, drehmoment: 1314, hubraum: 6166, zylinder: 8, laenge: 5916, breite: 2240, hoehe: 2100, radstand: 3684, gewicht: 3080, anhanger: 3674, sprint: 3.2, tank: 125, sitze: 5, raeder: 4, kmh: 210 }
             },
             {
                 id: "hilux",
                 name: "Toyota Hilux (2025)",
                 price: "53.000 €",
                 img: "toyota-hilux-2025-5.jpg",
-                stats: { ps: 204, laenge: 5325, breite: 1900, hoehe: 1815, gewicht: 2125, sprint: 10.7, tank: 80, sitze: 5, raeder: 4, kmh: 175 }
+                stats: { ps: 204, drehmoment: 500, hubraum: 2755, zylinder: 4, laenge: 5325, breite: 1900, hoehe: 1815, radstand: 3085, gewicht: 2125, anhanger: 3500, sprint: 10.7, tank: 80, sitze: 5, raeder: 4, kmh: 175 }
             },
             {
                 id: "suburban",
                 name: "Chevrolet Suburban High Country",
                 price: "111.000 €",
                 img: "2026_chevrolet_suburban_4dr-suv_high-country_fq_oem_1_1600.png",
-                stats: { ps: 426, laenge: 5733, breite: 2060, hoehe: 1923, gewicht: 2715, sprint: 6.1, tank: 106, sitze: 7, raeder: 4, kmh: 180 }
+                stats: { ps: 426, drehmoment: 624, hubraum: 6162, zylinder: 8, laenge: 5733, breite: 2060, hoehe: 1923, radstand: 3404, gewicht: 2715, anhanger: 3628, sprint: 6.1, tank: 106, sitze: 7, raeder: 4, kmh: 180 }
             },
             {
                 id: "silverado_zr2",
                 name: "Chevrolet Silverado ZR2",
                 price: "82.000 €",
                 img: "01-2024-chevrolet-silverado-zr2-driver-1.4.png",
-                stats: { ps: 426, laenge: 5890, breite: 2068, hoehe: 1991, gewicht: 2540, sprint: 5.9, tank: 91, sitze: 5, raeder: 4, kmh: 180 }
+                stats: { ps: 426, drehmoment: 624, hubraum: 6162, zylinder: 8, laenge: 5890, breite: 2068, hoehe: 1991, radstand: 3747, gewicht: 2540, anhanger: 4037, sprint: 5.9, tank: 91, sitze: 5, raeder: 4, kmh: 180 }
             },
             {
                 id: "hercules",
                 name: "Rezvani Hercules 6x6",
                 price: "555.000 €",
                 img: "Rezvani Hercules 6x6.png",
-                stats: { ps: 1014, laenge: 6197, breite: 2286, hoehe: 2006, gewicht: 3175, sprint: 3.9, tank: 140, sitze: 5, raeder: 6, kmh: 195 }
+                stats: { ps: 1014, drehmoment: 1180, hubraum: 6997, zylinder: 8, laenge: 6197, breite: 2286, hoehe: 2006, radstand: 3780, gewicht: 3175, anhanger: 4535, sprint: 3.9, tank: 140, sitze: 5, raeder: 6, kmh: 195 }
             },
             {
                 id: "tundra",
                 name: "Toyota Tundra (2026)",
                 price: "55.000 €",
                 img: "Screen-Shot-2024-10-22-at-4.18.49-PM.png",
-                stats: { ps: 443, laenge: 5933, breite: 2037, hoehe: 1981, gewicht: 2565, sprint: 5.7, tank: 122, sitze: 5, raeder: 4, kmh: 180 }
+                stats: { ps: 443, drehmoment: 790, hubraum: 3445, zylinder: 6, laenge: 5933, breite: 2037, hoehe: 1981, radstand: 3700, gewicht: 2565, anhanger: 5035, sprint: 5.7, tank: 122, sitze: 5, raeder: 4, kmh: 180 }
             }
         ];
 
-        // Strukturierte Bezeichnungen und Einheiten der Merkmale
+        // Strukturierte Definitionen aller 15 Merkmale
         const statLabels = {
-            ps: { label: "Motorleistung", unit: " PS", higherIsBetter: true },
-            laenge: { label: "Fahrzeuglänge", unit: " mm", higherIsBetter: true },
-            breite: { label: "Fahrzeugbreite", unit: " mm", higherIsBetter: true },
-            hoehe: { label: "Fahrzeughöhe", unit: " mm", higherIsBetter: true },
+            ps: { label: "Nennleistung", unit: " PS", higherIsBetter: true },
+            drehmoment: { label: "Max. Drehmoment", unit: " Nm", higherIsBetter: true },
+            hubraum: { label: "Hubraum", unit: " ccm", higherIsBetter: true },
+            zylinder: { label: "Zylinderanordnung", unit: "", higherIsBetter: true },
+            laenge: { label: "Gesamtlänge", unit: " mm", higherIsBetter: true },
+            breite: { label: "Gesamtbreite", unit: " mm", higherIsBetter: true },
+            hoehe: { label: "Gesamthöhe", unit: " mm", higherIsBetter: true },
+            radstand: { label: "Radstand", unit: " mm", higherIsBetter: true },
             gewicht: { label: "Leergewicht", unit: " kg", higherIsBetter: false },
-            sprint: { label: "0 - 100 km/h Sprint", unit: " Sek.", higherIsBetter: false },
-            tank: { label: "Tankvolumen", unit: " Liter", higherIsBetter: true },
-            sitze: { label: "Sitzplätze", unit: "", higherIsBetter: true },
-            raeder: { label: "Anzahl Räder", unit: "", higherIsBetter: true },
+            anhanger: { label: "Max. Anhängelast", unit: " kg", higherIsBetter: true },
+            sprint: { label: "Beschleunigung 0-100 km/h", unit: " Sek.", higherIsBetter: false },
+            tank: { label: "Tankkapazität", unit: " Liter", higherIsBetter: true },
+            sitze: { label: "Sitzkonfiguration", unit: " Plätze", higherIsBetter: true },
+            raeder: { label: "Achsenkonfiguration (Räder)", unit: "", higherIsBetter: true },
             kmh: { label: "Höchstgeschwindigkeit", unit: " km/h", higherIsBetter: true }
         };
 
         let selectedForCompare = [];
 
-        // 1. Initialisiere den Shop-Grid beim Laden
         function initShop() {
             const grid = document.getElementById('main-grid');
             grid.innerHTML = "";
@@ -415,20 +418,23 @@
                 const slot = document.createElement('div');
                 slot.className = 'car-slot';
                 slot.innerHTML = `
-                    <img src="${car.img}" alt="${car.name}">
-                    <div class="car-title">${car.name}</div>
-                    <div class="car-price">${car.price}</div>
-                    <button class="btn-details" onclick="showDetails(${index})">Details ansehen</button>
-                    <label class="compare-checkbox-container">
-                        <input type="checkbox" id="chk-${car.id}" onchange="toggleCompare('${car.id}')">
-                        Für Vergleich auswählen
-                    </label>
+                    <div>
+                        <img src="${car.img}" alt="${car.name}">
+                        <div class="car-title">${car.name}</div>
+                        <div class="car-price">${car.price}</div>
+                    </div>
+                    <div>
+                        <button class="btn-details" onclick="showDetails(${index})">Details ansehen</button>
+                        <label class="compare-checkbox-container">
+                            <input type="checkbox" id="chk-${car.id}" onchange="toggleCompare('${car.id}')">
+                            Für Vergleich vormerken
+                        </label>
+                    </div>
                 `;
                 grid.appendChild(slot);
             });
         }
 
-        // 2. Steuerung der Ansichten Wechsel
         function hideAllViews() {
             document.getElementById('shop-view').style.display = 'block';
             document.getElementById('detail-view').style.display = 'none';
@@ -436,17 +442,15 @@
             window.scrollTo(0, 0);
         }
 
-        // 3. Detailseite anzeigen
         function showDetails(index) {
             const car = carDatabase[index];
             document.getElementById('shop-view').style.display = 'none';
             document.getElementById('detail-view').style.display = 'block';
             
             document.getElementById('detail-title').innerText = car.name;
-            document.getElementById('detail-price').innerText = car.price;
+            document.getElementById('detail-price').innerText = `Listenpreis ab: ${car.price}`;
             document.getElementById('detail-img').src = car.img;
 
-            // Tabelle aufbauen
             const table = document.getElementById('stats-table-content');
             table.innerHTML = "";
             
@@ -461,14 +465,13 @@
             window.scrollTo(0, 0);
         }
 
-        // 4. Logik für die Auswahl-Häkchen (Maximal 2 Stück erlaubt)
         function toggleCompare(carId) {
             const checkbox = document.getElementById(`chk-${carId}`);
             
             if (checkbox.checked) {
                 if (selectedForCompare.length >= 2) {
-                    checkbox.checked = false; // Verhindert 3. Haken
-                    alert("Du kannst maximal 2 Fahrzeuge miteinander vergleichen!");
+                    checkbox.checked = false;
+                    alert("Es können maximal zwei Modelle gleichzeitig gegenübergestellt werden.");
                     return;
                 }
                 selectedForCompare.push(carId);
@@ -476,13 +479,11 @@
                 selectedForCompare = selectedForCompare.filter(id => id !== carId);
             }
 
-            // Update der Leiste unten
             const count = selectedForCompare.length;
-            document.getElementById('compare-status-text').innerText = `Wähle 2 Fahrzeuge für das Duell aus (${count}/2)`;
+            document.getElementById('compare-status-text').innerText = `Wählen Sie zwei Modelle für eine Gegenüberstellung (${count}/2)`;
             document.getElementById('compare-submit-btn').disabled = (count !== 2);
         }
 
-        // 5. Vergleichsduell ausführen und auswerten
         function startComparison() {
             if (selectedForCompare.length !== 2) return;
 
@@ -492,19 +493,18 @@
             document.getElementById('shop-view').style.display = 'none';
             document.getElementById('compare-view').style.display = 'block';
 
-            let score1 = 0;
-            let score2 = 0;
+            let points1 = 0;
+            let points2 = 0;
 
             const tableContent = document.getElementById('compare-table-content');
             tableContent.innerHTML = `
                 <tr>
-                    <th class="stat-name">Technische Daten</th>
+                    <th class="stat-name">Spezifikation</th>
                     <th>${car1.name}</th>
                     <th>${car2.name}</th>
                 </tr>
             `;
 
-            // Gehe Zeile für Zeile durch alle technischen Kriterien
             for (let key in statLabels) {
                 const val1 = car1.stats[key];
                 const val2 = car2.stats[key];
@@ -514,13 +514,12 @@
                 let class2 = "";
 
                 if (val1 !== val2) {
-                    // Prüfe, welcher Wert laut Regel gewinnt
                     if (rule.higherIsBetter) {
-                        if (val1 > val2) { class1 = "winner-cell"; score1++; } 
-                        else { class2 = "winner-cell"; score2++; }
+                        if (val1 > val2) { class1 = "higher-value-cell"; points1++; } 
+                        else { class2 = "higher-value-cell"; points2++; }
                     } else {
-                        if (val1 < val2) { class1 = "winner-cell"; score1++; } 
-                        else { class2 = "winner-cell"; score2++; }
+                        if (val1 < val2) { class1 = "higher-value-cell"; points1++; } 
+                        else { class2 = "higher-value-cell"; points2++; }
                     }
                 }
 
@@ -533,24 +532,18 @@
                 tableContent.appendChild(row);
             }
 
-            // Punktestand aktualisieren
-            document.getElementById('score-car1').innerText = `${car1.name}: ${score1} Punkte`;
-            document.getElementById('score-car2').innerText = `${car2.name}: ${score2} Punkte`;
-
-            // Gesamtsieger küren
-            const winnerAnnounce = document.getElementById('duel-winner-announcement');
-            if (score1 > score2) {
-                winnerAnnounce.innerText = `🏆 SIEGER DES DUELLS: ${car1.name}!`;
-            } else if (score2 > score1) {
-                winnerAnnounce.innerText = `🏆 SIEGER DES DUELLS: ${car2.name}!`;
+            const summaryBox = document.getElementById('comparison-summary');
+            if (points1 > points2) {
+                summaryBox.innerText = `Der ${car1.name} erzielt in ${points1} von 15 technischen Messwerten die höhere Wertung.`;
+            } else if (points2 > points1) {
+                summaryBox.innerText = `Der ${car2.name} erzielt in ${points2} von 15 technischen Messwerten die höhere Wertung.`;
             } else {
-                winnerAnnounce.innerText = `🤝 UNENTSCHIEDEN! Beide Trucks sind gleich stark!`;
+                summaryBox.innerText = `Ausgeglichene Datenstruktur: Beide Modelle erzielen mit jeweils ${points1} Punkten die gleiche Wertung.`;
             }
 
             window.scrollTo(0, 0);
         }
 
-        // Startet das Skript automatisch beim Seitenaufruf
         window.onload = initShop;
     </script>
 
