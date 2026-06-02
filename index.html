@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Carshop</title>
+    <style>
+        /* Ein einfaches, sauberes Design */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Das Raster für die 4x2 Aufteilung */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 Spalten nebeneinander */
+            gap: 20px; /* Abstand zwischen den Autos */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Styling für jeden einzelnen Auto-Slot */
+        .car-slot {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Platzhalter für deine Bilder */
+        .car-slot img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #e0e0e0; /* Grauer Kasten, solange kein Bild da ist */
+            border-radius: 4px;
+        }
+
+        .car-title {
+            font-size: 1.2rem;
+            margin: 10px 0 5px 0;
+            color: #222;
+        }
+
+        .car-price {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-details {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .btn-details:hover {
+            background-color: #2980b9;
+        }
+
+        /* Sorgt dafür, dass es auf Handys auch gut aussieht (untereinander) */
+        @media (max-width: 900px) {
+            .car-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Tablets */
+            }
+        }
+        @media (max-width: 600px) {
+            .car-grid {
+                grid-template-columns: 1fr; /* 1 Spalte auf Handys */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Willkommen in meinem Carshop</h1>
+
+    <div class="car-grid">
+
+        <div class="car-slot">
+            <img src="auto1.jpg" alt="Auto 1">
+            <div class="car-title">Modell Name 1</div>
+            <div class="car-price">45.000 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="auto2.jpg" alt="Auto 2">
+            <div class="car-title">Modell Name 2</div>
+            <div class="car-price">55.000 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="auto3.jpg" alt="Auto 3">
+            <div class="car-title">Modell Name 3</div>
+            <div class="car-price">29.900 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="auto4.jpg" alt="Auto 4">
+            <div class="car-title">Modell Name 4</div>
+            <div class="car-price">69.000 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="auto5.jpg" alt="Auto 5">
+            <div class="car-title">Modell Name 5</div>
+            <div class="car-price">39.500 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="auto6.jpg" alt="Auto 6">
+            <div class="car-title">Modell Name 6</div>
+            <div class="car-price">89.000 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="auto7.jpg" alt="Auto 7">
+            <div class="car-title">Modell Name 7</div>
+            <div class="car-price">19.990 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="auto8.jpg" alt="Auto 8">
+            <div class="car-title">Modell Name 8</div>
+            <div class="car-price">125.000 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
