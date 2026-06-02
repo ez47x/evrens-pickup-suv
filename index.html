@@ -1,551 +1,631 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVREN'S PICKUP & SUV SHOP</title>
+    <title>Apex Dynamics | Premium Vehicle Showroom</title>
+    <!-- Inter Font & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Luxus-Farbverlauf: Unten links Grau/Weiß -> Oben rechts edles Champagner-Gold */
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f6f7 0%, #fcfbf7 60%, #f4eee1 100%);
-            background-attachment: fixed;
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1c1a17 0%, #161719 40%, #0f1011 100%);
+            --accent-gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --luxury-gray: #1f2124;
+            --card-bg: rgba(26, 28, 32, 0.75);
+            --border-color: rgba(212, 175, 55, 0.2);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 30px 20px 100px 20px;
-            color: #2c3e50;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Edle, minimalistische Überschrift */
-        h1 {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-            letter-spacing: 2px;
-            font-size: 2.4rem;
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .subtitle {
-            font-size: 1rem;
-            color: #8a8d91;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        /* Luxurious Dynamic Lighting Background Elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vh;
+            background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
         }
 
-        /* Vergrößerte Fahrzeug-Slots (3er/4er Grid je nach Display) */
-        .car-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            max-width: 1400px;
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vh;
+            background: radial-gradient(circle, rgba(74,85,104,0.12) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 3.5rem 2rem 2rem 2rem;
+            text-align: center;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .car-slot {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid #e6e9ed;
-            border-radius: 14px;
-            padding: 22px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        .brand-subtitle {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Filter & Search Controls Panel */
+        .controls-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            margin: 0 auto 3rem auto;
+            padding: 1.5rem;
+            background: rgba(20, 22, 25, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            .controls-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3.2rem;
+            background: rgba(10, 11, 13, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 400;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .search-wrapper input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px var(--gold-glow);
+            background: rgba(15, 16, 19, 0.9);
+        }
+
+        .select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .select-wrapper i {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .select-wrapper select {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: rgba(10, 11, 13, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            transition: all 0.3s ease;
+        }
+
+        .select-wrapper select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .select-wrapper::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-gold);
+            pointer-events: none;
+        }
+
+        /* Showroom Grid Grid Layout */
+        .showroom-grid {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Vehicle Card Masterpieces */
+        .vehicle-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .car-slot:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
-            border-color: #d4af37; /* Goldene Akzentuierung beim Hover */
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-color);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(212, 175, 55, 0.06);
         }
 
-        /* Größere Bilddarstellung */
-        .car-slot img {
+        .image-container {
+            position: relative;
             width: 100%;
-            height: 210px;
+            height: 220px;
+            background: #0d0e10;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .car-title {
-            font-size: 1.25rem;
-            margin: 20px 0 8px 0;
+        .vehicle-card:hover .image-container img {
+            transform: scale(1.06);
+        }
+
+        /* Visual Tag Overlay */
+        .propulsion-badge {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            padding: 0.4rem 0.9rem;
+            background: rgba(10, 11, 13, 0.75);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 0.75rem;
             font-weight: 700;
-            color: #111;
-            height: 40px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 2;
+        }
+
+        .card-content {
+            padding: 1.75rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
-        .car-price {
-            color: #111;
-            font-weight: 500;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
         }
 
-        /* Hochwertige, matte Buttons */
-        .btn-details {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            letter-spacing: 0.5px;
-            transition: background-color 0.2s;
+        .title-block h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
         }
 
-        .btn-details:hover { background-color: #d4af37; }
-
-        .compare-checkbox-container {
-            margin-top: 18px;
-            padding-top: 14px;
-            border-top: 1px solid #eaedf1;
+        .title-block .model-year {
             font-size: 0.85rem;
-            color: #7f8c8d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
+            color: var(--accent-gold);
+            font-weight: 600;
+            letter-spacing: 0.05em;
         }
 
-        .compare-checkbox-container input {
+        .price-tag {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .price-tag::before {
+            content: 'MSRP';
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.1rem;
+        }
+
+        /* Technical Specification Matrix */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .spec-item i {
+            color: var(--accent-gold);
+            font-size: 0.95rem;
             width: 18px;
-            height: 18px;
-            accent-color: #d4af37;
-            cursor: pointer;
-        }
-
-        /* Edle Unterseiten (Details & Vergleich) */
-        #detail-view, #compare-view {
-            display: none;
-            background: rgba(255, 255, 255, 0.95);
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-            border: 1px solid #eaeaea;
-            text-align: left;
-        }
-
-        #detail-img {
-            width: 100%;
-            max-height: 500px;
-            object-fit: contain;
-            border-radius: 12px;
-            background-color: #fafafa;
-            margin-bottom: 30px;
-        }
-
-        .btn-back {
-            background-color: #7f8c8d;
-            color: white;
-            padding: 12px 28px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 40px;
-            transition: background-color 0.2s;
-        }
-        .btn-back:hover { background-color: #1a1a1a; }
-
-        /* Technische Tabellen im Luxus-Look */
-        .stats-table, .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .stats-table th, .stats-table td, .compare-table th, .compare-table td {
-            padding: 14px 20px;
-            border-bottom: 1px solid #edf2f7;
-            font-size: 0.95rem;
-        }
-
-        .stats-table th {
-            background-color: #f8f9fa;
-            color: #4a5568;
-            font-weight: 600;
-            width: 40%;
-        }
-
-        .compare-table th {
-            background-color: #1a1a1a;
-            color: white;
-            font-weight: 600;
-        }
-        .compare-table .stat-name {
-            font-weight: 600;
-            text-align: left;
-            background-color: #f8f9fa;
-            width: 26%;
-        }
-
-        /* Technische Wertungs-Akzente (Dezent statt grell) */
-        .higher-value-cell {
-            background-color: #f4f9f4 !important;
-            color: #27ae60;
-            font-weight: 600;
-        }
-
-        .summary-box {
-            background: #fdfbf7;
-            border: 1px solid #eadeca;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
             text-align: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #1a1a1a;
+            opacity: 0.85;
         }
 
-        /* Fixierte edle Statusleiste unten */
-        .compare-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.93);
-            padding: 20px;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
-            backdrop-filter: blur(15px);
-            z-index: 100;
+        .spec-meta {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            border-top: 1px solid #edf2f7;
+            flex-direction: column;
         }
 
-        .btn-compare-trigger {
-            background-color: #d4af37;
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            font-size: 1rem;
+        .spec-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .spec-value {
+            font-size: 0.88rem;
             font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .btn-compare-trigger:hover { background-color: #1a1a1a; }
-        .btn-compare-trigger:disabled {
-            background-color: #cbd5e0;
-            cursor: not-allowed;
+            color: var(--text-primary);
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 1200px) { .car-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 900px) { .car-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { 
-            .car-grid { grid-template-columns: 1fr; }
-            #detail-view, #compare-view { padding: 25px; }
+        /* Dynamic Status Feedback */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 5rem 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .no-results i {
+            color: var(--accent-gold);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+
+        .no-results p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- PORTFOLIO ÜBERSICHT -->
-    <div id="shop-view">
-        <h1>EVREN'S PICKUP & SUV SHOP</h1>
-        <div class="subtitle">Premium Automotive Portfolio & Technische Analysen</div>
+    <header>
+        <div class="brand-subtitle">Curated Hyper-Performance</div>
+        <h1>High-End Automotive Showroom</h1>
+    </header>
 
-        <div class="car-grid" id="main-grid">
-            <!-- Dynamischer Aufbau durch JS -->
+    <!-- Interactive Navigation Control Interface -->
+    <section class="controls-container">
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchBar" placeholder="Search fleet by brand, model or performance profiles...">
         </div>
-    </div>
-
-    <!-- TECHNISCHE SPEZIFIKATIONEN -->
-    <div id="detail-view">
-        <h1 id="detail-title"></h1>
-        <div id="detail-price"></div>
-        <img id="detail-img" src="" alt="Fahrzeug">
         
-        <h3 style="margin-top: 40px; font-weight: 700; letter-spacing: 0.5px; border-bottom: 1px solid #111; padding-bottom: 10px;">PRODUKTSPEZIFIKATIONEN</h3>
-        <table class="stats-table" id="stats-table-content"></table>
-        
-        <button class="btn-back" onclick="hideAllViews()">← Zurück zur Übersicht</button>
-    </div>
+        <div class="select-wrapper">
+            <i class="fa-solid fa-tags"></i>
+            <select id="priceSort">
+                <option value="default" disabled selected hidden>Sort by Valuation</option>
+                <option value="desc">Price: High to Low</option>
+                <option value="asc">Price: Low to High</option>
+            </select>
+        </div>
 
-    <!-- VERGLEICHSMODUL -->
-    <div id="compare-view">
-        <h1>Technische Gegenüberstellung</h1>
-        <div class="subtitle">Direkter Abgleich der fahrzeugspezifischen Kennwerte</div>
-        
-        <div class="summary-box" id="comparison-summary"></div>
+        <div class="select-wrapper">
+            <i class="fa-solid fa-arrow-down-a-z"></i>
+            <select id="alphaSort">
+                <option value="default" disabled selected hidden>Sort Alphabetically</option>
+                <option value="az">Name: A to Z</option>
+                <option value="za">Name: Z to A</option>
+            </select>
+        </div>
+    </section>
 
-        <table class="compare-table" id="compare-table-content"></table>
+    <!-- Master Grid Interface -->
+    <main class="showroom-grid" id="showroomGrid">
+        <!-- Rendered Programmatically via Dataset Structure below -->
+    </main>
 
-        <button class="btn-back" onclick="hideAllViews()">← Vergleich beenden</button>
-    </div>
-
-    <!-- UNTERE AKTIONBAR -->
-    <div class="compare-bar">
-        <span id="compare-status-text" style="font-weight: 500; letter-spacing: 0.5px;">Wählen Sie zwei Modelle für eine Gegenüberstellung (0/2)</span>
-        <button id="compare-submit-btn" class="btn-compare-trigger" disabled onclick="startComparison()">Fahrzeuge vergleichen</button>
-    </div>
-
+    <!-- Core Business and UI Synchronization Logic Architecture -->
     <script>
-        // Datenbank mit 15 harten, exakten Werksstatistiken pro Fahrzeug
-        const carDatabase = [
+        // Data Registry containing extended vehicle configuration arrays and parameters
+        const vehicleRegistry = [
             {
-                id: "raptor_r",
-                name: "Ford F-150 Raptor R",
-                price: "134.000 €",
-                img: "2023-ford-f-150-raptor-r-7.jpg",
-                stats: { ps: 712, drehmoment: 868, hubraum: 5163, zylinder: 8, laenge: 5908, breite: 2200, hoehe: 2047, radstand: 3693, gewicht: 2700, anhanger: 3946, sprint: 3.7, tank: 136, sitze: 5, raeder: 4, kmh: 180 }
+                brand: "Dodge",
+                model: "Durango SRT Hellcat",
+                year: 2026,
+                price: 144000,
+                propulsion: "Supercharged Gas",
+                image: "2021-dodge-durango-srt-hellcat.png",
+                engine: "6.2L SRT HEMI V8",
+                power: "710 HP",
+                torque: "645 lb-ft",
+                acceleration: "3.5s (0-60 mph)",
+                towing: "8,700 lbs"
             },
             {
-                id: "silverado_hd",
-                name: "Chevrolet Silverado HD",
-                price: "69.000 €",
-                img: "2024-silveradohd-mcm-gallery-ext-21-2.jpeg",
-                stats: { ps: 477, drehmoment: 1322, hubraum: 6649, zylinder: 8, laenge: 6351, breite: 2063, hoehe: 2030, radstand: 4037, gewicht: 3450, anhanger: 16329, sprint: 6.5, tank: 136, sitze: 6, raeder: 4, kmh: 155 }
+                brand: "Jeep",
+                model: "Grand Cherokee Trackhawk",
+                year: 2026,
+                price: 112000,
+                propulsion: "Supercharged Gas",
+                image: "1150-HP-Jeep-Grand-Cherokee-Trackhawk.png",
+                engine: "6.2L Supercharged V8",
+                power: "707 HP",
+                torque: "645 lb-ft",
+                acceleration: "3.5s (0-60 mph)",
+                towing: "7,200 lbs"
             },
             {
-                id: "ram_trx",
-                name: "RAM 1500 TRX Final Edition",
-                price: "122.000 €",
-                img: "26my-trx-overview-hero_9656e38a1c2dd6206629b89271587c68-1248x624-1.jpg",
-                stats: { ps: 712, drehmoment: 881, hubraum: 6166, zylinder: 8, laenge: 5916, breite: 2235, hoehe: 2055, radstand: 3684, gewicht: 2880, anhanger: 3674, sprint: 4.5, tank: 125, sitze: 5, raeder: 4, kmh: 190 }
+                brand: "Ford",
+                model: "F-150 Lightning Platinum",
+                year: 2025,
+                price: 94000,
+                propulsion: "Dual Motor EV",
+                image: "2023-Ford-Lightning-Electric-Driving-NF-24.png",
+                engine: "Extended Range Battery",
+                power: "580 HP",
+                torque: "775 lb-ft",
+                acceleration: "4.0s (0-60 mph)",
+                towing: "10,000 lbs"
             },
             {
-                id: "santa_fe",
-                name: "Hyundai Santa Fe (2024)",
-                price: "49.000 €",
-                img: "4-hyundai-santa-fe-review-2024-uk.jpg",
-                stats: { ps: 253, drehmoment: 361, hubraum: 2497, zylinder: 4, laenge: 4830, breite: 1900, hoehe: 1720, radstand: 2815, gewicht: 2060, anhanger: 2000, sprint: 7.8, tank: 67, sitze: 7, raeder: 4, kmh: 210 }
-            },
-            {
-                id: "gmc_sierra",
-                name: "GMC Sierra 3500HD Denali",
-                price: "112.000 €",
-                img: "gmc-sierra-3500hd-denali-2024.jpg",
-                stats: { ps: 477, drehmoment: 1322, hubraum: 6649, zylinder: 8, laenge: 6352, breite: 2073, hoehe: 2045, radstand: 4037, gewicht: 3510, anhanger: 16330, sprint: 6.7, tank: 136, sitze: 5, raeder: 4, kmh: 155 }
-            },
-            {
-                id: "velociraptor",
-                name: "Hennessey VelociRaptor 6x6",
-                price: "477.000 €",
-                img: "hennessey-velociraptor-6x6-6.jpg",
-                stats: { ps: 608, drehmoment: 843, hubraum: 3496, zylinder: 6, laenge: 6400, breite: 2210, hoehe: 2130, radstand: 3980, gewicht: 3130, anhanger: 3670, sprint: 4.9, tank: 136, sitze: 5, raeder: 6, kmh: 175 }
-            },
-            {
-                id: "mammoth",
-                name: "Hennessey Mammoth 1000",
-                price: "215.000 €",
-                img: "topgear-hennessey-mammoth-1000-066.jpg",
-                stats: { ps: 1026, drehmoment: 1314, hubraum: 6166, zylinder: 8, laenge: 5916, breite: 2240, hoehe: 2100, radstand: 3684, gewicht: 3080, anhanger: 3674, sprint: 3.2, tank: 125, sitze: 5, raeder: 4, kmh: 210 }
-            },
-            {
-                id: "hilux",
-                name: "Toyota Hilux (2025)",
-                price: "53.000 €",
-                img: "toyota-hilux-2025-5.jpg",
-                stats: { ps: 204, drehmoment: 500, hubraum: 2755, zylinder: 4, laenge: 5325, breite: 1900, hoehe: 1815, radstand: 3085, gewicht: 2125, anhanger: 3500, sprint: 10.7, tank: 80, sitze: 5, raeder: 4, kmh: 175 }
-            },
-            {
-                id: "suburban",
-                name: "Chevrolet Suburban High Country",
-                price: "111.000 €",
-                img: "2026_chevrolet_suburban_4dr-suv_high-country_fq_oem_1_1600.png",
-                stats: { ps: 426, drehmoment: 624, hubraum: 6162, zylinder: 8, laenge: 5733, breite: 2060, hoehe: 1923, radstand: 3404, gewicht: 2715, anhanger: 3628, sprint: 6.1, tank: 106, sitze: 7, raeder: 4, kmh: 180 }
-            },
-            {
-                id: "silverado_zr2",
-                name: "Chevrolet Silverado ZR2",
-                price: "82.000 €",
-                img: "01-2024-chevrolet-silverado-zr2-driver-1.4.png",
-                stats: { ps: 426, drehmoment: 624, hubraum: 6162, zylinder: 8, laenge: 5890, breite: 2068, hoehe: 1991, radstand: 3747, gewicht: 2540, anhanger: 4037, sprint: 5.9, tank: 91, sitze: 5, raeder: 4, kmh: 180 }
-            },
-            {
-                id: "hercules",
-                name: "Rezvani Hercules 6x6",
-                price: "555.000 €",
-                img: "Rezvani Hercules 6x6.png",
-                stats: { ps: 1014, drehmoment: 1180, hubraum: 6997, zylinder: 8, laenge: 6197, breite: 2286, hoehe: 2006, radstand: 3780, gewicht: 3175, anhanger: 4535, sprint: 3.9, tank: 140, sitze: 5, raeder: 6, kmh: 195 }
-            },
-            {
-                id: "tundra",
-                name: "Toyota Tundra (2026)",
-                price: "55.000 €",
-                img: "Screen-Shot-2024-10-22-at-4.18.49-PM.png",
-                stats: { ps: 443, drehmoment: 790, hubraum: 3445, zylinder: 6, laenge: 5933, breite: 2037, hoehe: 1981, radstand: 3700, gewicht: 2565, anhanger: 5035, sprint: 5.7, tank: 122, sitze: 5, raeder: 4, kmh: 180 }
+                brand: "Chevrolet",
+                model: "Colorado ZR2 Bison",
+                year: 2026,
+                price: 63000,
+                propulsion: "Turbocharged Gas",
+                image: "01-2024-chevrolet-silverado-zr2-driver-1.4.png",
+                engine: "2.7L TurboMax™ I4",
+                power: "310 HP",
+                torque: "430 lb-ft",
+                acceleration: "6.6s (0-60 mph)",
+                towing: "7,700 lbs"
             }
         ];
 
-        // Strukturierte Definitionen aller 15 Merkmale
-        const statLabels = {
-            ps: { label: "Nennleistung", unit: " PS", higherIsBetter: true },
-            drehmoment: { label: "Max. Drehmoment", unit: " Nm", higherIsBetter: true },
-            hubraum: { label: "Hubraum", unit: " ccm", higherIsBetter: true },
-            zylinder: { label: "Zylinderanordnung", unit: "", higherIsBetter: true },
-            laenge: { label: "Gesamtlänge", unit: " mm", higherIsBetter: true },
-            breite: { label: "Gesamtbreite", unit: " mm", higherIsBetter: true },
-            hoehe: { label: "Gesamthöhe", unit: " mm", higherIsBetter: true },
-            radstand: { label: "Radstand", unit: " mm", higherIsBetter: true },
-            gewicht: { label: "Leergewicht", unit: " kg", higherIsBetter: false },
-            anhanger: { label: "Max. Anhängelast", unit: " kg", higherIsBetter: true },
-            sprint: { label: "Beschleunigung 0-100 km/h", unit: " Sek.", higherIsBetter: false },
-            tank: { label: "Tankkapazität", unit: " Liter", higherIsBetter: true },
-            sitze: { label: "Sitzkonfiguration", unit: " Plätze", higherIsBetter: true },
-            raeder: { label: "Achsenkonfiguration (Räder)", unit: "", higherIsBetter: true },
-            kmh: { label: "Höchstgeschwindigkeit", unit: " km/h", higherIsBetter: true }
-        };
+        // Core DOM Elements Accessors
+        const showroomGrid = document.getElementById('showroomGrid');
+        const searchBar = document.getElementById('searchBar');
+        const priceSort = document.getElementById('priceSort');
+        const alphaSort = document.getElementById('alphaSort');
 
-        let selectedForCompare = [];
+        // Formats pricing integers into clean localized currency denominations 
+        function formatCurrency(amount) {
+            return '$' + amount.toLocaleString('en-US');
+        }
 
-        function initShop() {
-            const grid = document.getElementById('main-grid');
-            grid.innerHTML = "";
+        // Card Assembly pipeline providing semantic markup injections
+        function renderShowroom(vehicles) {
+            showroomGrid.innerHTML = '';
             
-            carDatabase.forEach((car, index) => {
-                const slot = document.createElement('div');
-                slot.className = 'car-slot';
-                slot.innerHTML = `
-                    <div>
-                        <img src="${car.img}" alt="${car.name}">
-                        <div class="car-title">${car.name}</div>
-                        <div class="car-price">${car.price}</div>
-                    </div>
-                    <div>
-                        <button class="btn-details" onclick="showDetails(${index})">Details ansehen</button>
-                        <label class="compare-checkbox-container">
-                            <input type="checkbox" id="chk-${car.id}" onchange="toggleCompare('${car.id}')">
-                            Für Vergleich vormerken
-                        </label>
+            if (vehicles.length === 0) {
+                showroomGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fa-solid fa-car-rear"></i>
+                        <p>No high-performance vehicles match your current criteria.</p>
                     </div>
                 `;
-                grid.appendChild(slot);
+                return;
+            }
+
+            vehicles.forEach(vehicle => {
+                const card = document.createElement('article');
+                card.className = 'vehicle-card';
+                card.innerHTML = `
+                    <div class="image-container">
+                        <span class="propulsion-badge">${vehicle.propulsion}</span>
+                        <img src="${vehicle.image}" alt="${vehicle.brand} ${vehicle.model}" onerror="this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=600';">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="title-block">
+                                <span class="model-year">${vehicle.year} Edition</span>
+                                <h3>${vehicle.brand} ${vehicle.model}</h3>
+                            </div>
+                            <div class="price-tag">${formatCurrency(vehicle.price)}</div>
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="fa-solid fa-microchip"></i>
+                                <div class="spec-meta">
+                                    <span class="spec-label">Powertrain</span>
+                                    <span class="spec-value">${vehicle.engine}</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fa-solid fa-bolt"></i>
+                                <div class="spec-meta">
+                                    <span class="spec-label">Output</span>
+                                    <span class="spec-value">${vehicle.power}</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fa-solid fa-gauge-high"></i>
+                                <div class="spec-meta">
+                                    <span class="spec-label">Torque</span>
+                                    <span class="spec-value">${vehicle.torque}</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fa-solid fa-stopwatch"></i>
+                                <div class="spec-meta">
+                                    <span class="spec-label">0-60 MPH</span>
+                                    <span class="spec-value">${vehicle.acceleration}</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fa-solid fa-weight-hanging"></i>
+                                <div class="spec-meta">
+                                    <span class="spec-label">Towing Max</span>
+                                    <span class="spec-value">${vehicle.towing}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                showroomGrid.appendChild(card);
             });
         }
 
-        function hideAllViews() {
-            document.getElementById('shop-view').style.display = 'block';
-            document.getElementById('detail-view').style.display = 'none';
-            document.getElementById('compare-view').style.display = 'none';
-            window.scrollTo(0, 0);
-        }
+        // Mutation Handler handling Filtering, Structural Querying, and Priority Sorting
+        function executeQueryFilter() {
+            let processedFleet = [...vehicleRegistry];
+            const queryToken = searchBar.value.toLowerCase().trim();
 
-        function showDetails(index) {
-            const car = carDatabase[index];
-            document.getElementById('shop-view').style.display = 'none';
-            document.getElementById('detail-view').style.display = 'block';
-            
-            document.getElementById('detail-title').innerText = car.name;
-            document.getElementById('detail-price').innerText = `Listenpreis ab: ${car.price}`;
-            document.getElementById('detail-img').src = car.img;
-
-            const table = document.getElementById('stats-table-content');
-            table.innerHTML = "";
-            
-            for (let key in statLabels) {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <th>${statLabels[key].label}</th>
-                    <td>${car.stats[key]}${statLabels[key].unit}</td>
-                `;
-                table.appendChild(row);
-            }
-            window.scrollTo(0, 0);
-        }
-
-        function toggleCompare(carId) {
-            const checkbox = document.getElementById(`chk-${carId}`);
-            
-            if (checkbox.checked) {
-                if (selectedForCompare.length >= 2) {
-                    checkbox.checked = false;
-                    alert("Es können maximal zwei Modelle gleichzeitig gegenübergestellt werden.");
-                    return;
-                }
-                selectedForCompare.push(carId);
-            } else {
-                selectedForCompare = selectedForCompare.filter(id => id !== carId);
+            // Eval Text Search Constraints
+            if (queryToken !== "") {
+                processedFleet = processedFleet.filter(car => {
+                    const inlineTerms = `${car.brand} ${car.model} ${car.engine} ${car.propulsion}`.toLowerCase();
+                    return inlineTerms.includes(queryToken);
+                });
             }
 
-            const count = selectedForCompare.length;
-            document.getElementById('compare-status-text').innerText = `Wählen Sie zwei Modelle für eine Gegenüberstellung (${count}/2)`;
-            document.getElementById('compare-submit-btn').disabled = (count !== 2);
-        }
-
-        function startComparison() {
-            if (selectedForCompare.length !== 2) return;
-
-            const car1 = carDatabase.find(c => c.id === selectedForCompare[0]);
-            const car2 = carDatabase.find(c => c.id === selectedForCompare[1]);
-
-            document.getElementById('shop-view').style.display = 'none';
-            document.getElementById('compare-view').style.display = 'block';
-
-            let points1 = 0;
-            let points2 = 0;
-
-            const tableContent = document.getElementById('compare-table-content');
-            tableContent.innerHTML = `
-                <tr>
-                    <th class="stat-name">Spezifikation</th>
-                    <th>${car1.name}</th>
-                    <th>${car2.name}</th>
-                </tr>
-            `;
-
-            for (let key in statLabels) {
-                const val1 = car1.stats[key];
-                const val2 = car2.stats[key];
-                const rule = statLabels[key];
-
-                let class1 = "";
-                let class2 = "";
-
-                if (val1 !== val2) {
-                    if (rule.higherIsBetter) {
-                        if (val1 > val2) { class1 = "higher-value-cell"; points1++; } 
-                        else { class2 = "higher-value-cell"; points2++; }
-                    } else {
-                        if (val1 < val2) { class1 = "higher-value-cell"; points1++; } 
-                        else { class2 = "higher-value-cell"; points2++; }
-                    }
-                }
-
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="stat-name">${rule.label}</td>
-                    <td class="${class1}">${val1}${rule.unit}</td>
-                    <td class="${class2}">${val2}${rule.unit}</td>
-                `;
-                tableContent.appendChild(row);
+            // Eval Price Sorting Matrix
+            if (priceSort.value === 'desc') {
+                processedFleet.sort((alpha, beta) => beta.price - alpha.price);
+            } else if (priceSort.value === 'asc') {
+                processedFleet.sort((alpha, beta) => alpha.price - beta.price);
             }
 
-            const summaryBox = document.getElementById('comparison-summary');
-            if (points1 > points2) {
-                summaryBox.innerText = `Der ${car1.name} erzielt in ${points1} von 15 technischen Messwerten die höhere Wertung.`;
-            } else if (points2 > points1) {
-                summaryBox.innerText = `Der ${car2.name} erzielt in ${points2} von 15 technischen Messwerten die höhere Wertung.`;
-            } else {
-                summaryBox.innerText = `Ausgeglichene Datenstruktur: Beide Modelle erzielen mit jeweils ${points1} Punkten die gleiche Wertung.`;
+            // Eval Lexical Sorting Alphabetical Matrix
+            if (alphaSort.value === 'az') {
+                processedFleet.sort((alpha, beta) => {
+                    const fullTitleA = `${alpha.brand} ${alpha.model}`.toLowerCase();
+                    const fullTitleB = `${beta.brand} ${beta.model}`.toLowerCase();
+                    return fullTitleA.localeCompare(fullTitleB);
+                });
+            } else if (alphaSort.value === 'za') {
+                processedFleet.sort((alpha, beta) => {
+                    const fullTitleA = `${alpha.brand} ${alpha.model}`.toLowerCase();
+                    const fullTitleB = `${beta.brand} ${beta.model}`.toLowerCase();
+                    return fullTitleB.localeCompare(fullTitleA);
+                });
             }
 
-            window.scrollTo(0, 0);
+            renderShowroom(processedFleet);
         }
 
-        window.onload = initShop;
+        // Binding event listener triggers to pipeline mutations
+        searchBar.addEventListener('input', executeQueryFilter);
+        
+        priceSort.addEventListener('change', () => {
+            // Unlink conflicting alphabetical priority sorting index selections on active manipulation
+            alphaSort.selectedIndex = 0;
+            executeQueryFilter();
+        });
+        
+        alphaSort.addEventListener('change', () => {
+            // Unlink conflicting evaluation pricing priority index selections on active manipulation
+            priceSort.selectedIndex = 0;
+            executeQueryFilter();
+        });
+
+        // Initialize App State
+        document.addEventListener('DOMContentLoaded', () => {
+            renderShowroom(vehicleRegistry);
+        });
     </script>
-
 </body>
 </html>
