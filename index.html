@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evrens Pickup & SUV Shop</title>
+    <title>EVREN'S PICKUP & SUV SHOP</title>
     <style>
-        /* Ein einfaches, sauberes Design */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -14,21 +13,25 @@
             text-align: center;
         }
 
+        /* Titel in Arial Black und extra fett */
         h1 {
-            color: #333;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #111;
             margin-bottom: 30px;
+            letter-spacing: 1px;
         }
 
-        /* Das Raster für die 4er Aufteilung */
+        /* Das Raster für die Hauptseite */
         .car-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Immer 4 Spalten nebeneinander */
-            gap: 20px; /* Abstand zwischen den Autos */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Styling für jeden einzelnen Auto-Slot */
         .car-slot {
             background: white;
             border: 1px solid #ddd;
@@ -37,12 +40,10 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Bilder-Styling */
         .car-slot img {
             width: 100%;
             height: 180px;
             object-fit: cover;
-            background-color: #e0e0e0; 
             border-radius: 4px;
         }
 
@@ -51,7 +52,7 @@
             margin: 10px 0 5px 0;
             color: #222;
             font-weight: bold;
-            height: 44px; /* Hält die Boxen gleich hoch, falls ein Name länger ist */
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -64,7 +65,7 @@
             margin-bottom: 10px;
         }
 
-        .btn-details {
+        .btn-details, .btn-back {
             display: inline-block;
             background-color: #3498db;
             color: white;
@@ -72,116 +73,176 @@
             text-decoration: none;
             border-radius: 4px;
             font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-details:hover {
+        .btn-details:hover, .btn-back:hover {
             background-color: #2980b9;
         }
 
-        /* Handys und Tablets Anpassung */
+        /* Die Detailansicht ("nächste Seite"), am Anfang unsichtbar */
+        #detail-view {
+            display: none;
+            background: white;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        #detail-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        #detail-title {
+            font-size: 2rem;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+        }
+
+        #detail-price {
+            font-size: 1.5rem;
+            color: #27ae60;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        /* Responsive Design */
         @media (max-width: 900px) {
-            .car-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Tablets */
-            }
+            .car-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 600px) {
-            .car-grid {
-                grid-template-columns: 1fr; /* 1 Spalte auf Handys */
-            }
+            .car-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Evrens Pickup & SUV Shop</h1>
+    <div id="shop-view">
+        <h1>EVREN'S PICKUP & SUV SHOP</h1>
 
-    <div class="car-grid">
+        <div class="car-grid">
+            <div class="car-slot">
+                <img src="2023-ford-f-150-raptor-r-7.jpg" alt="Ford F-150 Raptor R">
+                <div class="car-title">Ford F-150 Raptor R</div>
+                <div class="car-price">134.000 €</div>
+                <button class="btn-details" onclick="showDetails('Ford F-150 Raptor R', '134.000 €', '2023-ford-f-150-raptor-r-7.jpg')">Details ansehen</button>
+            </div>
 
-        <div class="car-slot">
-            <img src="2023-ford-f-150-raptor-r-7.jpg" alt="Ford F-150 Raptor R">
-            <div class="car-title">Ford F-150 Raptor R</div>
-            <div class="car-price">145.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
+            <div class="car-slot">
+                <img src="2024-silveradohd-mcm-gallery-ext-21-2.jpeg" alt="Chevrolet Silverado HD">
+                <div class="car-title">Chevrolet Silverado HD</div>
+                <div class="car-price">69.000 €</div>
+                <button class="btn-details" onclick="showDetails('Chevrolet Silverado HD', '69.000 €', '2024-silveradohd-mcm-gallery-ext-21-2.jpeg')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="26my-trx-overview-hero_9656e38a1c2dd6206629b89271587c68-1248x624-1.jpg" alt="RAM 1500 TRX Final Edition">
+                <div class="car-title">RAM 1500 TRX Final Edition</div>
+                <div class="car-price">122.000 €</div>
+                <button class="btn-details" onclick="showDetails('RAM 1500 TRX Final Edition', '122.000 €', '26my-trx-overview-hero_9656e38a1c2dd6206629b89271587c68-1248x624-1.jpg')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="4-hyundai-santa-fe-review-2024-uk.jpg" alt="Hyundai Santa Fe (2024)">
+                <div class="car-title">Hyundai Santa Fe (2024)</div>
+                <div class="car-price">49.000 €</div>
+                <button class="btn-details" onclick="showDetails('Hyundai Santa Fe (2024)', '49.000 €', '4-hyundai-santa-fe-review-2024-uk.jpg')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="gmc-sierra-3500hd-denali-2024.jpg" alt="GMC Sierra 3500HD Denali">
+                <div class="car-title">GMC Sierra 3500HD Denali</div>
+                <div class="car-price">112.000 €</div>
+                <button class="btn-details" onclick="showDetails('GMC Sierra 3500HD Denali', '112.000 €', 'gmc-sierra-3500hd-denali-2024.jpg')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="hennessey-velociraptor-6x6-6.jpg" alt="Hennessey VelociRaptor 6x6">
+                <div class="car-title">Hennessey VelociRaptor 6x6</div>
+                <div class="car-price">477.000 €</div>
+                <button class="btn-details" onclick="showDetails('Hennessey VelociRaptor 6x6', '477.000 €', 'hennessey-velociraptor-6x6-6.jpg')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="topgear-hennessey-mammoth-1000-066.jpg" alt="Hennessey Mammoth 1000">
+                <div class="car-title">Hennessey Mammoth 1000</div>
+                <div class="car-price">215.000 €</div>
+                <button class="btn-details" onclick="showDetails('Hennessey Mammoth 1000', '215.000 €', 'topgear-hennessey-mammoth-1000-066.jpg')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="toyota-hilux-2025-5.jpg" alt="Toyota Hilux (2025)">
+                <div class="car-title">Toyota Hilux (2025)</div>
+                <div class="car-price">53.000 €</div>
+                <button class="btn-details" onclick="showDetails('Toyota Hilux (2025)', '53.000 €', 'toyota-hilux-2025-5.jpg')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="2026_chevrolet_suburban_4dr-suv_high-country_fq_oem_1_1600.png" alt="Chevrolet Suburban High Country">
+                <div class="car-title">Chevrolet Suburban High Country</div>
+                <div class="car-price">111.000 €</div>
+                <button class="btn-details" onclick="showDetails('Chevrolet Suburban High Country', '111.000 €', '2026_chevrolet_suburban_4dr-suv_high-country_fq_oem_1_1600.png')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="01-2024-chevrolet-silverado-zr2-driver-1.4.png" alt="Chevrolet Silverado ZR2">
+                <div class="car-title">Chevrolet Silverado ZR2</div>
+                <div class="car-price">82.000 €</div>
+                <button class="btn-details" onclick="showDetails('Chevrolet Silverado ZR2', '82.000 €', '01-2024-chevrolet-silverado-zr2-driver-1.4.png')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="Rezvani Hercules 6x6.png" alt="Rezvani Hercules 6x6">
+                <div class="car-title">Rezvani Hercules 6x6</div>
+                <div class="car-price">555.000 €</div>
+                <button class="btn-details" onclick="showDetails('Rezvani Hercules 6x6', '555.000 €', 'Rezvani Hercules 6x6.png')">Details ansehen</button>
+            </div>
+
+            <div class="car-slot">
+                <img src="Screen-Shot-2024-10-22-at-4.18.49-PM.png" alt="Toyota Tundra (2026)">
+                <div class="car-title">Toyota Tundra (2026)</div>
+                <div class="car-price">55.000 €</div>
+                <button class="btn-details" onclick="showDetails('Toyota Tundra (2026)', '55.000 €', 'Screen-Shot-2024-10-22-at-4.18.49-PM.png')">Details ansehen</button>
+            </div>
         </div>
-
-        <div class="car-slot">
-            <img src="2024-silveradohd-mcm-gallery-ext-21-2.jpeg" alt="Chevrolet Silverado HD">
-            <div class="car-title">Chevrolet Silverado HD</div>
-            <div class="car-price">98.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="26my-trx-overview-hero_9656e38a1c2dd6206629b89271587c68-1248x624-1.jpg" alt="RAM 1500 TRX">
-            <div class="car-title">RAM 1500 TRX Final Edition</div>
-            <div class="car-price">135.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="4-hyundai-santa-fe-review-2024-uk.jpg" alt="Hyundai Santa Fe">
-            <div class="car-title">Hyundai Santa Fe (2024)</div>
-            <div class="car-price">55.500 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="gmc-sierra-3500hd-denali-2024.jpg" alt="GMC Sierra 3500HD Denali">
-            <div class="car-title">GMC Sierra 3500HD Denali</div>
-            <div class="car-price">110.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="hennessey-velociraptor-6x6-6.jpg" alt="Hennessey VelociRaptor 6x6">
-            <div class="car-title">Hennessey VelociRaptor 6x6</div>
-            <div class="car-price">395.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="topgear-hennessey-mammoth-1000-066.jpg" alt="Hennessey Mammoth 1000">
-            <div class="car-title">Hennessey Mammoth 1000</div>
-            <div class="car-price">220.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="toyota-hilux-2025-5.jpg" alt="Toyota Hilux">
-            <div class="car-title">Toyota Hilux (2025)</div>
-            <div class="car-price">48.900 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="2026_chevrolet_suburban_4dr-suv_high-country_fq_oem_1_1600.png" alt="Chevrolet Suburban High Country">
-            <div class="car-title">Chevrolet Suburban High Country</div>
-            <div class="car-price">102.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="01-2024-chevrolet-silverado-zr2-driver-1.4.png" alt="Chevrolet Silverado ZR2">
-            <div class="car-title">Chevrolet Silverado ZR2</div>
-            <div class="car-price">85.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="Rezvani Hercules 6x6.png" alt="Rezvani Hercules 6x6">
-            <div class="car-title">Rezvani Hercules 6x6</div>
-            <div class="car-price">275.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="Screen-Shot-2024-10-22-at-4.18.49-PM.png" alt="Toyota Tundra 2026">
-            <div class="car-title">Toyota Tundra (2026)</div>
-            <div class="car-price">76.000 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
     </div>
+
+    <div id="detail-view">
+        <h1 id="detail-title">Fahrzeugname</h1>
+        <img id="detail-img" src="" alt="Fahrzeugbild">
+        <div id="detail-price">Preis</div>
+        <button class="btn-back" onclick="hideDetails()">← Zurück zur Übersicht</button>
+    </div>
+
+    <script>
+        function showDetails(title, price, imgSrc) {
+            // Verstecke die Shop-Übersicht
+            document.getElementById('shop-view').style.display = 'none';
+            
+            // Befülle die Detailseite mit den Daten des angeklickten Autos
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-price').innerText = price;
+            document.getElementById('detail-img').src = imgSrc;
+            
+            // Zeige die Detailseite an
+            document.getElementById('detail-view').style.display = 'block';
+            window.scrollTo(0, 0); // Scrollt nach ganz oben
+        }
+
+        function hideDetails() {
+            // Verstecke die Detailseite
+            document.getElementById('detail-view').style.display = 'none';
+            
+            // Zeige die Shop-Übersicht wieder an
+            document.getElementById('shop-view').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
