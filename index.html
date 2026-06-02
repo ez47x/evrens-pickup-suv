@@ -19,10 +19,10 @@
             margin-bottom: 30px;
         }
 
-        /* Das Raster für die 4x2 Aufteilung */
+        /* Das Raster für die 4er Aufteilung */
         .car-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 Spalten nebeneinander */
+            grid-template-columns: repeat(4, 1fr); /* Immer 4 nebeneinander */
             gap: 20px; /* Abstand zwischen den Autos */
             max-width: 1200px;
             margin: 0 auto;
@@ -51,7 +51,7 @@
             margin: 10px 0 5px 0;
             color: #222;
             font-weight: bold;
-            height: 44px; /* Hält die Boxen gleich hoch, falls ein Name länger ist */
+            height: 44px; /* Hält die Boxen gleich hoch */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -81,12 +81,12 @@
         /* Handys und Tablets Anpassung */
         @media (max-width: 900px) {
             .car-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Tablets */
             }
         }
         @media (max-width: 600px) {
             .car-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* 1 Spalte auf Handys */
             }
         }
     </style>
@@ -97,7 +97,6 @@
 
     <div class="car-grid">
 
-        <!-- Reihe 1: Oben (Slot 1-4) -->
         <div class="car-slot">
             <img src="2023-ford-f-150-raptor-r-7.jpg" alt="Ford F-150 Raptor R">
             <div class="car-title">Ford F-150 Raptor R</div>
@@ -126,7 +125,6 @@
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
-        <!-- Reihe 2: Unten (Slot 5-8) -->
         <div class="car-slot">
             <img src="gmc-sierra-3500hd-denali-2024.jpg" alt="GMC Sierra 3500HD Denali">
             <div class="car-title">GMC Sierra 3500HD Denali</div>
@@ -152,6 +150,34 @@
             <img src="toyota-hilux-2025-5.jpg" alt="Toyota Hilux">
             <div class="car-title">Toyota Hilux (2025)</div>
             <div class="car-price">48.900 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="2026_chevrolet_suburban_4dr-suv_high-country_fq_oem_1_1600.png" alt="Chevrolet Suburban High Country">
+            <div class="car-title">Chevrolet Suburban High Country</div>
+            <div class="car-price">102.000 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="01-2024-chevrolet-silverado-zr2-driver-1.4.png" alt="Chevrolet Silverado ZR2">
+            <div class="car-title">Chevrolet Silverado ZR2</div>
+            <div class="car-price">85.000 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="Rezvani Hercules 6x6.png" alt="Rezvani Hercules 6x6">
+            <div class="car-title">Rezvani Hercules 6x6</div>
+            <div class="car-price">450.000 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <div class="car-slot">
+            <img src="Screen-Shot-2024-10-22-at-4.18.49-PM.png" alt="Toyota Tundra">
+            <div class="car-title">Toyota Tundra (2026)</div>
+            <div class="car-price">76.000 €</div>
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
