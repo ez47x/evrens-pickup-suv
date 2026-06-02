@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Carshop</title>
+    <title>Evrens Pickup & SUV Shop</title>
     <style>
         /* Ein einfaches, sauberes Design */
         body {
@@ -42,14 +42,19 @@
             width: 100%;
             height: 180px;
             object-fit: cover;
-            background-color: #e0e0e0; /* Grauer Kasten, solange kein Bild da ist */
+            background-color: #e0e0e0; 
             border-radius: 4px;
         }
 
         .car-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin: 10px 0 5px 0;
             color: #222;
+            font-weight: bold;
+            height: 44px; /* Hält die Boxen gleich hoch, falls ein Name länger ist */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .car-price {
@@ -73,78 +78,80 @@
             background-color: #2980b9;
         }
 
-        /* Sorgt dafür, dass es auf Handys auch gut aussieht (untereinander) */
+        /* Handys und Tablets Anpassung */
         @media (max-width: 900px) {
             .car-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Tablets */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         @media (max-width: 600px) {
             .car-grid {
-                grid-template-columns: 1fr; /* 1 Spalte auf Handys */
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <h1>Willkommen in meinem Carshop</h1>
+    <h1>Evrens Pickup & SUV Shop</h1>
 
     <div class="car-grid">
 
+        <!-- Reihe 1: Oben (Slot 1-4) -->
         <div class="car-slot">
-            <img src="auto1.jpg" alt="Auto 1">
-            <div class="car-title">Modell Name 1</div>
-            <div class="car-price">45.000 €</div>
+            <img src="2023-ford-f-150-raptor-r-7.jpg" alt="Ford F-150 Raptor R">
+            <div class="car-title">Ford F-150 Raptor R</div>
+            <div class="car-price">145.000 €</div>
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
         <div class="car-slot">
-            <img src="auto2.jpg" alt="Auto 2">
-            <div class="car-title">Modell Name 2</div>
-            <div class="car-price">55.000 €</div>
+            <img src="2024-silveradohd-mcm-gallery-ext-21-2.jpeg" alt="Chevrolet Silverado HD">
+            <div class="car-title">Chevrolet Silverado HD</div>
+            <div class="car-price">98.000 €</div>
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
         <div class="car-slot">
-            <img src="auto3.jpg" alt="Auto 3">
-            <div class="car-title">Modell Name 3</div>
-            <div class="car-price">29.900 €</div>
+            <img src="26my-trx-overview-hero_9656e38a1c2dd6206629b89271587c68-1248x624-1.jpg" alt="RAM 1500 TRX">
+            <div class="car-title">RAM 1500 TRX Final Edition</div>
+            <div class="car-price">135.000 €</div>
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
         <div class="car-slot">
-            <img src="auto4.jpg" alt="Auto 4">
-            <div class="car-title">Modell Name 4</div>
-            <div class="car-price">69.000 €</div>
+            <img src="4-hyundai-santa-fe-review-2024-uk.jpg" alt="Hyundai Santa Fe">
+            <div class="car-title">Hyundai Santa Fe (2024)</div>
+            <div class="car-price">55.500 €</div>
+            <a href="#" class="btn-details">Details ansehen</a>
+        </div>
+
+        <!-- Reihe 2: Unten (Slot 5-8) -->
+        <div class="car-slot">
+            <img src="gmc-sierra-3500hd-denali-2024.jpg" alt="GMC Sierra 3500HD Denali">
+            <div class="car-title">GMC Sierra 3500HD Denali</div>
+            <div class="car-price">110.000 €</div>
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
         <div class="car-slot">
-            <img src="auto5.jpg" alt="Auto 5">
-            <div class="car-title">Modell Name 5</div>
-            <div class="car-price">39.500 €</div>
+            <img src="hennessey-velociraptor-6x6-6.jpg" alt="Hennessey VelociRaptor 6x6">
+            <div class="car-title">Hennessey VelociRaptor 6x6</div>
+            <div class="car-price">395.000 €</div>
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
         <div class="car-slot">
-            <img src="auto6.jpg" alt="Auto 6">
-            <div class="car-title">Modell Name 6</div>
-            <div class="car-price">89.000 €</div>
+            <img src="topgear-hennessey-mammoth-1000-066.jpg" alt="Hennessey Mammoth 1000">
+            <div class="car-title">Hennessey Mammoth 1000</div>
+            <div class="car-price">220.000 €</div>
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
         <div class="car-slot">
-            <img src="auto7.jpg" alt="Auto 7">
-            <div class="car-title">Modell Name 7</div>
-            <div class="car-price">19.990 €</div>
-            <a href="#" class="btn-details">Details ansehen</a>
-        </div>
-
-        <div class="car-slot">
-            <img src="auto8.jpg" alt="Auto 8">
-            <div class="car-title">Modell Name 8</div>
-            <div class="car-price">125.000 €</div>
+            <img src="toyota-hilux-2025-5.jpg" alt="Toyota Hilux">
+            <div class="car-title">Toyota Hilux (2025)</div>
+            <div class="car-price">48.900 €</div>
             <a href="#" class="btn-details">Details ansehen</a>
         </div>
 
